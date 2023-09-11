@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.dealer.model.FarmerList"/>
+    <fullyQualifiedTypeName name="com.dealer.repository.CropListRepository"/>
+    <fullyQualifiedTypeName name="com.dealer.services.DealerService"/>
+    <fullyQualifiedTypeName name="com.dealer.model.DealerList"/>
+    <fullyQualifiedTypeName name="com.dealer.model.Dealer"/>
+    <fullyQualifiedTypeName name="com.dealer.model.CropsList"/>
+    <fullyQualifiedTypeName name="com.dealer.model.Crops"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.client.loadbalancer.LoadBalanced"/>
+    <fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
+    <fullyQualifiedTypeName name="com.dealer.repository.DealerRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+</qualifiedTypeNameHistroy>

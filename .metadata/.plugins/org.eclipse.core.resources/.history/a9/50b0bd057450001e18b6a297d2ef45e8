@@ -1,0 +1,42 @@
+package com.farmer.model;
+
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+
+
+
+@Document("farmer")
+public class Farmer {
+	
+	@Id
+	private String fid;
+	@Field
+	private String femail;
+	@Field
+	private String fpass;
+	@Field
+	private String fname;
+	@Field
+	private String fimage;
+	@Field
+	private String fbank;
+	@Field
+	private String fpaytmid;
+	@Field
+	private String faccountno;
+	@Field
+	private String fbankbranch;
+	@Field
+	private String fcontact;
+	@Field
+	private String flocation;
+	@Field
+	private String fabout;
+	@Field
+	private List<Crops> crops;
+	
+}
