@@ -102,7 +102,7 @@ public class FarmerService {
 	}
 	
 	//Add crops by farmers
-	public ResponseEntity<Crops> addCrops(String fid, Crops crop)
+	public ResponseEntity<String> addCrops(String fid, Crops crop)
 	{
 //		Crops crops = restTemplate.getForObject("http://Crop-Service/addCrop", Crops.class);
 //		return "added";
@@ -111,10 +111,10 @@ public class FarmerService {
 
         HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
 
-        ResponseEntity<Crops> response = restTemplate.postForEntity(
+        ResponseEntity<String> response = restTemplate.postForEntity(
         		"http://Crop-Service/addCrop",
             request,
-            Crops.class
+            String.class
         );
 
         // Handle the response as needed

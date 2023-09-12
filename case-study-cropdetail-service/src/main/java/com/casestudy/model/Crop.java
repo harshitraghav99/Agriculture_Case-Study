@@ -12,6 +12,7 @@ public class Crop {
 	private int cropid;
 	private String cropname;
 	private String cropimage;
+	//yet to learn and add
 	private String cropqlty;
 	private String croplocation;
 	private String cropcontact;

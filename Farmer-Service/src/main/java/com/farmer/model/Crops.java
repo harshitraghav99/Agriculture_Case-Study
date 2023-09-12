@@ -8,8 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("crops")
 public class Crops {
 	
-	@Transient
-	public static final String SEQUENCE_NAME = "cropidsequence";
+
 	
 	private String fid;
 	private int cropid;
@@ -81,9 +80,21 @@ public class Crops {
 	public void setCropprice(String cropprice) {
 		this.cropprice = cropprice;
 	}
-	public static String getSequenceName() {
-		return SEQUENCE_NAME;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	@Transient
+//	public static final String SEQUENCE_NAME = "cropidsequence";
+//	public static String getSequenceName() {
+//		return SEQUENCE_NAME;
+//	}
 	
 	
 }
