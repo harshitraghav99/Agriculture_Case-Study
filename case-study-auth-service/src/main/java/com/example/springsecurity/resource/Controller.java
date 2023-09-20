@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ import com.example.springsecurity.repository.UserInfoRepository;
 import com.example.springsecurity.service.JwtService;
 
 @RestController
+@CrossOrigin	
 @RequestMapping("/auth")
 public class Controller {
 	@Autowired
@@ -85,8 +87,8 @@ public class Controller {
 	public String welcome(){
 		return "welcome";
 	}
-	@PreAuthorize("ROLE_DEALER")
-	@GetMapping("/findAllDealer")
+//	@PreAuthorize("ROLE_DEALER")
+//	@GetMapping("/findAllDealer")
 	
 	
 	
@@ -99,9 +101,13 @@ public class Controller {
 //	}
 	@PostMapping("/authenticate")
 	public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+		System.out.println(authRequest.getUsername()+authRequest.getPassword());
 		Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())); 
 		if(authentication.isAuthenticated()) {
-			return jwtService.generateToken(authRequest.getUsername());	
+			System.out.println("auth");
+			String token=jwtService.generateToken(authRequest.getUsername());
+			System.out.println(token);
+			return token;	
 		}
 		else {
 			throw new UsernameNotFoundException("invalid username");

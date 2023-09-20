@@ -48,7 +48,12 @@ public class JwtService {
 	private Boolean isTokenExpired(String token) {
 		return extractExpiration(token).before(new Date());
 	}
-	
+//	
+//	<dependency>
+//    <groupId>org.springframework.cloud</groupId>
+//    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+//    <version>4.0.3</version>
+//</dependency>
 	public Boolean validateToken(String token,UserDetails userDetails) {
 		final String username=extractUsername(token);
 		return (username.equals(userDetails.getUsername())&&!isTokenExpired(token));
