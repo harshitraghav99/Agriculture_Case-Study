@@ -3685,3 +3685,42 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 14:12:30.666
 !MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 14:41:42.508
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:11:35.886
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:13:53.628
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:14:05.600
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:43:56.268
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:47:42.107
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:48:28.396
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:49:27.154
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:52:24.821
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:55:45.298
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:56:06.198
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:56:30.255
+!MESSAGE Classpath changed for project: case-study-auth-service
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-09-20 18:56:58.370
+!MESSAGE Classpath changed for project: case-study-auth-service

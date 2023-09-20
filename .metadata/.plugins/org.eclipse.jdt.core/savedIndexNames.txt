@@ -126,7 +126,6 @@ INDEX VERSION 1.134+D:\training\sts\workspaces\workspaceCaseStudy\.metadata\.plu
 158184743.index
 3598602679.index
 3539669261.index
-4041296163.index
 1800512382.index
 1937385960.index
 1637007386.index

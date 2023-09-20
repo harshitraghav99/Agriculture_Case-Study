@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,15 +11,31 @@ export class LoginService {
 
 
   //calling server to generate token
+  
 
   doLogin(credentials:any){
     //token generate
-    return this.http.post(`${this.url}/authenticate`,credentials)
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': "Basic" + btoa(credentials)
+});
+
+    return this.http.post(`${this.url}/authenticate`,credentials,{headers,responseType:'text'})
 
   }
   //for login user
   loginUser(token:string){
     localStorage.setItem('token',token)
+; // Retrieve the token from localStorage
+
+  if (token) {
+    const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+    console.log(tokenPayload);
+
+  // Now you can access the roles from the token payload
+  const roles = tokenPayload.roles; // Assuming 'roles' is the field in the payload containing roles
+  console.log('Roles:', roles);
+  }
     return true;
   }
 

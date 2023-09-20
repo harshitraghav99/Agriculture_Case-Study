@@ -22,8 +22,13 @@ export class LoginPageComponent {
 
       console.log(this.credentials);
       this.loginService.doLogin(this.credentials).subscribe({
-        next:response=>console.log(response.error.error),
-        error:error=>console.log(error)
+        next:(response:string)=>{
+          console.log(response)
+          this.loginService.loginUser(response)
+        },
+        error:(error:any)=>console.log(error),
+        complete:()=>console.log("completed")
+        
         
       })
       // console.log(token)

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,7 +33,7 @@ import com.example.springsecurity.repository.UserInfoRepository;
 import com.example.springsecurity.service.JwtService;
 
 @RestController
-@CrossOrigin	
+@CrossOrigin(origins = "*")	
 @RequestMapping("/auth")
 public class Controller {
 	@Autowired
@@ -100,14 +101,15 @@ public class Controller {
 //		return "user added to system";
 //	}
 	@PostMapping("/authenticate")
-	public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
-		System.out.println(authRequest.getUsername()+authRequest.getPassword());
+	public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+//		System.out.println(authRequest.getUsername()+authRequest.getPassword());
 		Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())); 
 		if(authentication.isAuthenticated()) {
-			System.out.println("auth");
-			String token=jwtService.generateToken(authRequest.getUsername());
-			System.out.println(token);
-			return token;	
+//			System.out.println("auth");
+			UserInfo user =  userInfoRepository.findByName(authRequest.getUsername()).get();
+			String token=jwtService.generateToken(user.getName(),user.getRoles());
+//			System.out.println(token);
+			return ResponseEntity.ok(token);	
 		}
 		else {
 			throw new UsernameNotFoundException("invalid username");

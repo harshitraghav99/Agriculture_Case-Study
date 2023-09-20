@@ -3,6 +3,7 @@ package com.example.springsecurity.service;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -20,8 +21,9 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 	private static final String Secret="5367566859703373367639792F423F452848284D6251655468576D5A71347437";
 
-	public String generateToken(String username) {
+	public String generateToken(String username,String roles) {
 		Map<String,Object> claims=new HashMap<>();
+		claims.put("roles", roles);
 		return createToken(claims,username);
 	}
 	public String extractUsername(String token) {
@@ -48,12 +50,7 @@ public class JwtService {
 	private Boolean isTokenExpired(String token) {
 		return extractExpiration(token).before(new Date());
 	}
-//	
-//	<dependency>
-//    <groupId>org.springframework.cloud</groupId>
-//    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-//    <version>4.0.3</version>
-//</dependency>
+	
 	public Boolean validateToken(String token,UserDetails userDetails) {
 		final String username=extractUsername(token);
 		return (username.equals(userDetails.getUsername())&&!isTokenExpired(token));
