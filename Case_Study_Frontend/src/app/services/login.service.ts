@@ -25,24 +25,31 @@ export class LoginService {
   }
   //for login user
   loginUser(token:string){
-    localStorage.setItem('token',token)
-; // Retrieve the token from localStorage
+    localStorage.setItem('token',token);
+     // Retrieve the token from localStorage
 
-  if (token) {
-    const tokenPayload = JSON.parse(atob(token.split('.')[1]));
-    console.log(tokenPayload);
-
-  // Now you can access the roles from the token payload
-  const roles = tokenPayload.roles; // Assuming 'roles' is the field in the payload containing roles
-  console.log('Roles:', roles);
-  }
+  
     return true;
   }
-
+  getRoles(token:string){
+    if (token) {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+      console.log(tokenPayload);
+  
+    // Now you can access the roles from the token payload
+    const roles = tokenPayload.roles; // Assuming 'roles' is the field in the payload containing roles
+    console.log('Roles:', roles);
+    return roles;
+    }
+  }
   //check user is logged in or not
   isLoggedIn(){
     let token = localStorage.getItem('token');
-    if(token== undefined && token==='null' && token == null ){
+    
+    
+    if(token===undefined || token==='' || token === null ){
+      
+      
       return false;
     }
     else{

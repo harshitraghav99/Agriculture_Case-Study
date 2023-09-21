@@ -25,12 +25,22 @@ export class LoginPageComponent {
         next:(response:string)=>{
           console.log(response)
           this.loginService.loginUser(response)
+          if(this.loginService.getRoles(response)==="ROLE_DEALER" ) {
+            // console.log("dealer");
+            window.location.href="/dealer";
+          }
+          else if(this.loginService.getRoles(response)==="ROLE_FARMER" ) {
+            // console.log("dealer");
+            window.location.href="/farmer";
+          } 
         },
         error:(error:any)=>console.log(error),
         complete:()=>console.log("completed")
         
         
       })
+      
+      
       // console.log(token)
       
 
