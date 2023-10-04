@@ -13,100 +13,95 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Dealer {
 	
 	@Id
-	private String dealerid;
+	private String dealerId;
 	@Field 	//username
-	private String dealeremail;
+	private String dealerEmail;
 	@Field	//password
-	private String dealerpass;
+	private String dealerPassword;
 	@Field
-	private String dealername;
+	private String dealerName;
 	@Field
-	private String dealerphone;
+	private String dealerPhone;
+	
 	@Field
-	private String dealerimage;
+	private String dealerLocation;
 	@Field
-	private String dealerlocation;
+	private String dealerAbout;
 	@Field
-	private String dealerabout;
+	private String dealerBank;
 	@Field
-	private String dealerbank;
+	private String dealerBranch;
 	@Field
-	private String dealerbranch;
+	private String dealerAccountNo;
 	@Field
-	private String dealeraccountno;
-	@Field
-	private String dealerpaytmid;
+	private String dealerPaytmId;
+	public String getDealerId() {
+		return dealerId;
+	}
+	public void setDealerId(String dealerId) {
+		this.dealerId = dealerId;
+	}
+	public String getDealerEmail() {
+		return dealerEmail;
+	}
+	public void setDealerEmail(String dealerEmail) {
+		this.dealerEmail = dealerEmail;
+	}
+	public String getDealerPassword() {
+		return dealerPassword;
+	}
+	public void setDealerPassword(String dealerPassword) {
+		this.dealerPassword = dealerPassword;
+	}
+	public String getDealerName() {
+		return dealerName;
+	}
+	public void setDealerName(String dealerName) {
+		this.dealerName = dealerName;
+	}
+	public String getDealerPhone() {
+		return dealerPhone;
+	}
+	public void setDealerPhone(String dealerPhone) {
+		this.dealerPhone = dealerPhone;
+	}
+	
+	public String getDealerLocation() {
+		return dealerLocation;
+	}
+	public void setDealerLocation(String dealerLocation) {
+		this.dealerLocation = dealerLocation;
+	}
+	public String getDealerAbout() {
+		return dealerAbout;
+	}
+	public void setDealerAbout(String dealerAbout) {
+		this.dealerAbout = dealerAbout;
+	}
+	public String getDealerBank() {
+		return dealerBank;
+	}
+	public void setDealerBank(String dealerBank) {
+		this.dealerBank = dealerBank;
+	}
+	public String getDealerBranch() {
+		return dealerBranch;
+	}
+	public void setDealerBranch(String dealerBranch) {
+		this.dealerBranch = dealerBranch;
+	}
+	public String getDealerAccountNo() {
+		return dealerAccountNo;
+	}
+	public void setDealerAccountNo(String dealerAccountNo) {
+		this.dealerAccountNo = dealerAccountNo;
+	}
+	public String getDealerPaytmId() {
+		return dealerPaytmId;
+	}
+	public void setDealerPaytmId(String dealerPaytmId) {
+		this.dealerPaytmId = dealerPaytmId;
+	}
 
-	public String getDealerid() {
-		return dealerid;
-	}
-	public void setDealerid(String dealerid) {
-		this.dealerid = dealerid;
-	}
-	public String getDealeremail() {
-		return dealeremail;
-	}
-	public void setDealeremail(String dealeremail) {
-		this.dealeremail = dealeremail;
-	}
-	public String getDealerpass() {
-		return dealerpass;
-	}
-	public void setDealerpass(String dealerpass) {
-		this.dealerpass = dealerpass;
-	}
-	public String getDealername() {
-		return dealername;
-	}
-	public void setDealername(String dealername) {
-		this.dealername = dealername;
-	}
-	public String getDealerphone() {
-		return dealerphone;
-	}
-	public void setDealerphone(String dealerphone) {
-		this.dealerphone = dealerphone;
-	}
-	public String getDealerimage() {
-		return dealerimage;
-	}
-	public void setDealerimage(String dealerimage) {
-		this.dealerimage = dealerimage;
-	}
-	public String getDealerlocation() {
-		return dealerlocation;
-	}
-	public void setDealerlocation(String dealerlocation) {
-		this.dealerlocation = dealerlocation;
-	}
-	public String getDealerabout() {
-		return dealerabout;
-	}
-	public void setDealerabout(String dealerabout) {
-		this.dealerabout = dealerabout;
-	}
-	public String getDealerbank() {
-		return dealerbank;
-	}
-	public void setDealerbank(String dealerbank) {
-		this.dealerbank = dealerbank;
-	}
-	public String getDealerbranch() {
-		return dealerbranch;
-	}
-	public void setDealerbranch(String dealerbranch) {
-		this.dealerbranch = dealerbranch;
-	}
-	public String getDealeraccountno() {
-		return dealeraccountno;
-	}
-	public void setDealeraccountno(String dealeraccountno) {
-		this.dealeraccountno = dealeraccountno;
-	}
-	public String getDealerpaytmid() {
-		return dealerpaytmid;
-	}
-	public void setDealerpaytmid(String dealerpaytmid) {
-		this.dealerpaytmid = dealerpaytmid;
-	}
+	
 }

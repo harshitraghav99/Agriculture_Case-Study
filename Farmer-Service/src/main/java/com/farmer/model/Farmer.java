@@ -9,107 +9,123 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 
 
-@Document("farmer")
+@Document(collection="Farmers")
 public class Farmer {
 	
 	@Id
-	private String fid;
+	private String farmerId;
 	@Field
-	private String femail;
+	private String farmerEmail;
 	@Field
-	private String fpass;
+	private String farmerPassword;
 	@Field
-	private String fname;
+	private String farmerName;
+	
 	@Field
-	private String fimage;
+	private String farmerBank;
 	@Field
-	private String fbank;
+	private String farmerPaytmId;
 	@Field
-	private String fpaytmid;
+	private String farmerAccountNo;
 	@Field
-	private String faccountno;
+	private String farmerBankBranch;
 	@Field
-	private String fbankbranch;
+	private String farmerContact;
 	@Field
-	private String fcontact;
+	private String farmerLocation;
 	@Field
-	private String flocation;
-	@Field
-	private String fabout;
+	private String farmerAbout;
 	@Field
 	private List<Crops> crops;
-	public String getFid() {
-		return fid;
+	
+	public String getFarmerId() {
+		return farmerId;
 	}
-	public void setFid(String fid) {
-		this.fid = fid;
+
+	public void setFarmerId(String farmerId) {
+		this.farmerId = farmerId;
 	}
-	public String getFemail() {
-		return femail;
+
+	public String getFarmerEmail() {
+		return farmerEmail;
 	}
-	public void setFemail(String femail) {
-		this.femail = femail;
+
+	public void setFarmerEmail(String farmerEmail) {
+		this.farmerEmail = farmerEmail;
 	}
-	public String getFpass() {
-		return fpass;
+
+	public String getFarmerPassword() {
+		return farmerPassword;
 	}
-	public void setFpass(String fpass) {
-		this.fpass = fpass;
+
+	public void setFarmerPassword(String farmerPassword) {
+		this.farmerPassword = farmerPassword;
 	}
-	public String getFname() {
-		return fname;
+
+	public String getFarmerName() {
+		return farmerName;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
+
+	public void setFarmerName(String farmerName) {
+		this.farmerName = farmerName;
 	}
-	public String getFimage() {
-		return fimage;
+
+	public String getFarmerBank() {
+		return farmerBank;
 	}
-	public void setFimage(String fimage) {
-		this.fimage = fimage;
+
+	public void setFarmerBank(String farmerBank) {
+		this.farmerBank = farmerBank;
 	}
-	public String getFbank() {
-		return fbank;
+
+	public String getFarmerPaytmId() {
+		return farmerPaytmId;
 	}
-	public void setFbank(String fbank) {
-		this.fbank = fbank;
+
+	public void setFarmerPaytmId(String farmerPaytmId) {
+		this.farmerPaytmId = farmerPaytmId;
 	}
-	public String getFpaytmid() {
-		return fpaytmid;
+
+	public String getFarmerAccountNo() {
+		return farmerAccountNo;
 	}
-	public void setFpaytmid(String fpaytmid) {
-		this.fpaytmid = fpaytmid;
+
+	public void setFarmerAccountNo(String farmerAccountNo) {
+		this.farmerAccountNo = farmerAccountNo;
 	}
-	public String getFaccountno() {
-		return faccountno;
+
+	public String getFarmerBankBranch() {
+		return farmerBankBranch;
 	}
-	public void setFaccountno(String faccountno) {
-		this.faccountno = faccountno;
+
+	public void setFarmerBankBranch(String farmerBankBranch) {
+		this.farmerBankBranch = farmerBankBranch;
 	}
-	public String getFbankbranch() {
-		return fbankbranch;
+
+	public String getFarmerContact() {
+		return farmerContact;
 	}
-	public void setFbankbranch(String fbankbranch) {
-		this.fbankbranch = fbankbranch;
+
+	public void setFarmerContact(String farmerContact) {
+		this.farmerContact = farmerContact;
 	}
-	public String getFcontact() {
-		return fcontact;
+
+	public String getFarmerLocation() {
+		return farmerLocation;
 	}
-	public void setFcontact(String fcontact) {
-		this.fcontact = fcontact;
+
+	public void setFarmerLocation(String farmerLocation) {
+		this.farmerLocation = farmerLocation;
 	}
-	public String getFlocation() {
-		return flocation;
+
+	public String getFarmerAbout() {
+		return farmerAbout;
 	}
-	public void setFlocation(String flocation) {
-		this.flocation = flocation;
+
+	public void setFarmerAbout(String farmerAbout) {
+		this.farmerAbout = farmerAbout;
 	}
-	public String getFabout() {
-		return fabout;
-	}
-	public void setFabout(String fabout) {
-		this.fabout = fabout;
-	}
+
 	public List<Crops> getCrops() {
 		return crops;
 	}

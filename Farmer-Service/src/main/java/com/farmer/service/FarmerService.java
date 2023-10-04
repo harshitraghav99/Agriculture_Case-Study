@@ -49,13 +49,13 @@ public class FarmerService {
 //	//FARMER OPERATIONS
 //	
 //	//add a farmer
-//	public String addFarmer(Farmer f)
-//	{
-//		f.setCrops(null);
+	public String addFarmer(Farmer f)
+	{
+		f.setCrops(null);
 //		f.setFabout(null);
-//		farmerRepo.save(f);
-//		return "Added Farmer";
-//	}
+		farmerRepo.save(f);
+		return "Added Farmer";
+	}
 //	
 //	//get farmer details
 //	public Optional<Farmer> getFarmerDetails(String fid)

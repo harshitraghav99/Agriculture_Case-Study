@@ -45,21 +45,26 @@ public class FarmerResource {
 	
 	
 	//display farmers added crops
-	@RequestMapping("/{femail}/fetchcrops")
-	public List<Crops> findCrops(@PathVariable("femail") String femail)
-	{
-		return farmerService.findCrops(femail);
-	}
-	
+//	@RequestMapping("/{femail}/fetchcrops")
+//	public List<Crops> findCrops(@PathVariable("femail") String femail)
+//	{
+//		return farmerService.findCrops(femail);
+//	}
+//	
 	//search crops (soon to be deployed with name)
-	@RequestMapping("/{fid}/search/{cropid}")
-	public Crops searchCrops(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid)
-	{
-		return farmerService.fetchCrop(fid, cropid);
-	}
+//	@RequestMapping("/{fid}/search/{cropid}")
+//	public Crops searchCrops(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid)
+//	{
+//		return farmerService.fetchCrop(fid, cropid);
+//	}
 	
 	//ADDING
 	
+	@RequestMapping(method = RequestMethod.POST, value = "/addFarmer")
+	public String addFarmer( @RequestBody Farmer farmer)
+	{
+		return farmerService.addFarmer(farmer);
+	}
 	//add crops for farmers
 	@RequestMapping(method = RequestMethod.POST, value = "/{fid}/addcrops")
 	public ResponseEntity<String> addCrops(@PathVariable("fid") String fid, @RequestBody Crops crop)
@@ -77,11 +82,11 @@ public class FarmerResource {
 //	}
 	
 	//update crops for farmers
-	@RequestMapping(method = RequestMethod.PUT, value = "/{fid}/updateCrops/{cropid}")
-	public String updateCrops(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid, @RequestBody Crops crop)
-	{
-		return farmerService.updateCrop(fid, cropid, crop);
-	}
+//	@RequestMapping(method = RequestMethod.PUT, value = "/{fid}/updateCrops/{cropid}")
+//	public String updateCrops(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid, @RequestBody Crops crop)
+//	{
+//		return farmerService.updateCrop(fid, cropid, crop);
+//	}
 	
 	//DELETION
 	
@@ -93,11 +98,11 @@ public class FarmerResource {
 //	}
 	
 	//let farmer delete the crop that he has added
-	@RequestMapping(method = RequestMethod.DELETE, value = "/{fid}/delete/{cropid}")
-	public String deleteCrop(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid)
-	{
-		return farmerService.deleteCrop(fid, cropid);
-	}
+//	@RequestMapping(method = RequestMethod.DELETE, value = "/{fid}/delete/{cropid}")
+//	public String deleteCrop(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid)
+//	{
+//		return farmerService.deleteCrop(fid, cropid);
+//	}
 //	
 //	//farmer email fetch
 //		@GetMapping("/farmer/{femail}")

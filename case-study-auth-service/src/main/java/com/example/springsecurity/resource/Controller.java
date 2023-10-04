@@ -30,6 +30,7 @@ import com.example.springsecurity.repository.DealerRepository;
 import com.example.springsecurity.repository.FarmerRepository;
 
 import com.example.springsecurity.repository.UserInfoRepository;
+import com.example.springsecurity.service.FarmerService;
 import com.example.springsecurity.service.JwtService;
 
 @RestController
@@ -49,57 +50,85 @@ public class Controller {
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private DealerRepository managementRepository;
+	private DealerRepository dealerRepository;
 	
 	@Autowired
 	private UserInfoRepository userInfoRepository;
 	
+	@Autowired
+	private FarmerService farmerService;
 	
 	
 	@PostMapping("/registerFarmer")
-	public String registerFarmer(@RequestBody Farmer farmer) {
+	public ResponseEntity<?> registerFarmer(@RequestBody Farmer farmer) {
 		
-		farmer.setId((userInfoRepository.findAll().size())+1);
+		farmer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
 		repository.save(farmer);
+		farmerService.addFarmer(farmer.getId(), farmer);
+		
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(farmer.getId());
+		System.out.println(farmer.getFarmerName());
 		userInfo.setName(farmer.getFarmerName());
-		userInfo.setPassword(passwordEncoder.encode(farmer.getPassword()));
+		System.out.println(farmer.getFarmerPassword());
+		userInfo.setPassword(passwordEncoder.encode(farmer.getFarmerPassword()));
 		userInfo.setRoles("ROLE_FARMER");
 		userInfoRepository.save(userInfo);
+//		AuthRequest authRequest = new AuthRequest(farmer.getFarmerName(),farmer.getPassword());
+//		Authentication authentication= authenticationManager.authenticate(
+//				new UsernamePasswordAuthenticationToken(
+//						authRequest.getUsername(),
+//						authRequest.getPassword()));
+//		if(authentication.isAuthenticated()) {
+////			System.out.println("auth");
+//			UserInfo user =  userInfoRepository.findByName(authRequest.getUsername()).get();
+//			String token=jwtService.generateToken(user.getName(),user.getRoles());
+////		return "added DEALER with id: " + dealer.getId();
+//			return ResponseEntity.ok(token);
+//		}
+//		else
+//		{
+//			throw new UsernameNotFoundException("invalid username");
+//		}
+//		return "added FARMER with id: " + farmer.getId();
+		return ResponseEntity.ok(farmer.getFarmerAbout());
 		
-		return "added FARMER with id: " + farmer.getId();
 	}
 	@PostMapping("/registerDealer")
-	public String registerDealer(@RequestBody Dealer dealer) {
-		dealer.setId((userInfoRepository.findAll().size())+1);
-		managementRepository.save(dealer);
+	public ResponseEntity<?> registerDealer(@RequestBody Dealer dealer) {
+		dealer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
+		dealerRepository.save(dealer);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(dealer.getId());
-		userInfo.setName(dealer.getName());
-		userInfo.setPassword(passwordEncoder.encode(dealer.getPassword()));
+		userInfo.setName(dealer.getDealerName());
+		userInfo.setPassword(passwordEncoder.encode(dealer.getDealerPassword()));
 		userInfo.setRoles("ROLE_DEALER");
 		userInfoRepository.save(userInfo);
+//		AuthRequest authRequest = new AuthRequest(dealer.getDealerName(),dealer.getDealerPassword());
+//		Authentication authentication= authenticationManager.authenticate(
+//				new UsernamePasswordAuthenticationToken(
+//						authRequest.getUsername(),
+//						authRequest.getPassword()));
+//		if(authentication.isAuthenticated()) {
+////			System.out.println("auth");
+//			UserInfo user =  userInfoRepository.findByName(authRequest.getUsername()).get();
+//			String token=jwtService.generateToken(user.getName(),user.getRoles());
+////		return "added DEALER with id: " + dealer.getId();
+//			return ResponseEntity.ok(token);
+//		}
+//		else
+//		{
+//			throw new UsernameNotFoundException("invalid username");
+//		}
+		return ResponseEntity.ok(dealer.getDealerAbout());
 		
-		return "added DEALER with id: " + dealer.getId();
 	}
 	
 	@GetMapping("/welcome")
 	public String welcome(){
 		return "welcome";
 	}
-//	@PreAuthorize("ROLE_DEALER")
-//	@GetMapping("/findAllDealer")
-	
-	
-	
-	
-//	@PostMapping("/new")
-//	public String addUser(@RequestBody UserInfo userInfo) {
-//		userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
-//		userInfoRepository.save(userInfo);
-//		return "user added to system";
-//	}
+
 	@PostMapping("/authenticate")
 	public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
 //		System.out.println(authRequest.getUsername()+authRequest.getPassword());
