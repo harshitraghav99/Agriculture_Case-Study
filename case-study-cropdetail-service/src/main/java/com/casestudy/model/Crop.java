@@ -7,8 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Crops")
 public class Crop {
-	@Id
+	
 	private String fid;
+	@Id
 	private int cropid;
 	private String cropname;
 	private String cropimage;

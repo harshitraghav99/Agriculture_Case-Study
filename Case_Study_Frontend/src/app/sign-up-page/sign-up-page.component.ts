@@ -38,13 +38,13 @@ export class SignUpPageComponent {
     this.show='dealer';
   }
 
-  onSubmit(){
-    if(this.farmerCredentials.farmerName===null 
-      &&
-      this.farmerCredentials.farmerPassword===null
-      &&
-      this.farmerCredentials.far)
-  }
+  // onSubmit(){
+  //   if(this.farmerCredentials.farmerName===null 
+  //     &&
+  //     this.farmerCredentials.farmerPassword===null
+  //     &&
+  //     this.farmerCredentials.far)
+  // }
 
   
 }

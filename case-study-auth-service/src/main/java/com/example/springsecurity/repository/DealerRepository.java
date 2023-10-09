@@ -6,6 +6,6 @@ import com.example.springsecurity.model.Dealer;
 
 
 
-public interface DealerRepository extends MongoRepository<Dealer, Integer> {
+public interface DealerRepository extends MongoRepository<Dealer, String> {
 
 }
