@@ -8,6 +8,6 @@ import com.dealer.model.Dealer;
 @Repository
 public interface DealerRepository extends MongoRepository<Dealer, String>{
 	
-	Dealer findByDealeremail(String dealeremail);
+	Dealer findByDealerEmail(String dealeremail);
 
 }
