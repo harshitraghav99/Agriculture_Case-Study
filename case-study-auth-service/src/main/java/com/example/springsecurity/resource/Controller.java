@@ -66,10 +66,10 @@ public class Controller {
 	@PostMapping("/registerFarmer")
 	public ResponseEntity<?> registerFarmer(@RequestBody Farmer farmer) {
 		
-		farmer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
+//		farmer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
 //		repository.save(farmer);
 //		System.out.println("hello"+farmer.getFarmerName());
-		farmerService.addFarmer(farmer.getId(), farmer);
+		farmerService.addFarmer("0", farmer);
 		
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(farmer.getId());
@@ -101,7 +101,7 @@ public class Controller {
 	}
 	@PostMapping("/registerDealer")
 	public ResponseEntity<?> registerDealer(@RequestBody Dealer dealer) {
-		dealer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
+//		dealer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
 		dealerService.addDealer("0", dealer);
 //		dealerRepository.save(dealer);
 		UserInfo userInfo = new UserInfo();
