@@ -44,7 +44,11 @@ public class DealerResource {
 
 	
 	
-	
+	@PostMapping("/{dealerid}")
+	public String addDealer(@RequestBody Dealer dealer)
+	{
+		return dealerService.addDealer(dealer);
+	}
 
 	
 	

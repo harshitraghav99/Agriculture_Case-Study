@@ -104,8 +104,7 @@ public class FarmerService {
 	//Add crops by farmers
 	public ResponseEntity<String> addCrops(String fid, Crops crop)
 	{
-//		Crops crops = restTemplate.getForObject("http://Crop-Service/addCrop", Crops.class);
-//		return "added";
+
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 

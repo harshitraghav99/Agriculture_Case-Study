@@ -8,24 +8,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.springsecurity.model.Dealer;
 import com.example.springsecurity.model.Farmer;
 
-
 @Service
-public class FarmerService {
+public class DealerService {
 	@Autowired
 	RestTemplate restTemplate;
-	
-	public ResponseEntity<String> addFarmer(String fid, Farmer farmer)
+	public ResponseEntity<String> addDealer(String did, Dealer dealer)
 	{
 
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Farmer> request = new HttpEntity<>(farmer, headers);
+        HttpEntity<Dealer> request = new HttpEntity<>(dealer, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://Farmer-Service/addFarmer",
+        		"http://Dealer-Service/addDealer",
             request,
             String.class
         );
@@ -34,4 +33,5 @@ public class FarmerService {
         return response;
 	}
 	
+
 }

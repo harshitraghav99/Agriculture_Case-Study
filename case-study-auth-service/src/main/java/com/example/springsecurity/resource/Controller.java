@@ -30,6 +30,7 @@ import com.example.springsecurity.repository.DealerRepository;
 import com.example.springsecurity.repository.FarmerRepository;
 
 import com.example.springsecurity.repository.UserInfoRepository;
+import com.example.springsecurity.service.DealerService;
 import com.example.springsecurity.service.FarmerService;
 import com.example.springsecurity.service.JwtService;
 
@@ -58,12 +59,16 @@ public class Controller {
 	@Autowired
 	private FarmerService farmerService;
 	
+	@Autowired
+	private DealerService dealerService;
+	
 	
 	@PostMapping("/registerFarmer")
 	public ResponseEntity<?> registerFarmer(@RequestBody Farmer farmer) {
 		
 		farmer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
-		repository.save(farmer);
+//		repository.save(farmer);
+//		System.out.println("hello"+farmer.getFarmerName());
 		farmerService.addFarmer(farmer.getId(), farmer);
 		
 		UserInfo userInfo = new UserInfo();
@@ -97,7 +102,8 @@ public class Controller {
 	@PostMapping("/registerDealer")
 	public ResponseEntity<?> registerDealer(@RequestBody Dealer dealer) {
 		dealer.setId(Integer.toString((userInfoRepository.findAll().size())+1));
-		dealerRepository.save(dealer);
+		dealerService.addDealer("0", dealer);
+//		dealerRepository.save(dealer);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(dealer.getId());
 		userInfo.setName(dealer.getDealerName());
@@ -134,7 +140,7 @@ public class Controller {
 //		System.out.println(authRequest.getUsername()+authRequest.getPassword());
 		Authentication authentication= authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())); 
 		if(authentication.isAuthenticated()) {
-//			System.out.println("auth");
+			System.out.println("auth"+authRequest.getUsername());
 			UserInfo user =  userInfoRepository.findByName(authRequest.getUsername()).get();
 			String token=jwtService.generateToken(user.getName(),user.getRoles());
 //			System.out.println(token);
