@@ -8,9 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Crops")
 public class Crop {
 	
-	private String fid;
+//	private String fid;
 	@Id
-	private int cropid;
+	private String cropId;
 	private String cropname;
 	private String cropimage;
 	//yet to learn and add
@@ -20,17 +20,28 @@ public class Crop {
 	private String cropqnty;
 	private String cropdesc;
 	private String cropprice;
-	public String getFid() {
-		return fid;
+
+	private String farmerId;
+	private String farmerEmail;
+	public String getFarmerEmail() {
+		return farmerEmail;
 	}
-	public void setFid(String fid) {
-		this.fid = fid;
+	public void setFarmerEmail(String farmerEmail) {
+		this.farmerEmail = farmerEmail;
 	}
-	public int getCropid() {
-		return cropid;
+	public String getFarmerId() {
+		return farmerId;
 	}
-	public void setCropid(int cropid) {
-		this.cropid = cropid;
+	public void setFarmerId(String farmerId) {
+		this.farmerId = farmerId;
+	}
+	
+	
+	public String getCropId() {
+		return cropId;
+	}
+	public void setCropId(String cropId) {
+		this.cropId = cropId;
 	}
 	public String getCropname() {
 		return cropname;

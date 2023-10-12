@@ -24,8 +24,9 @@ public class FarmerService {
 
         HttpEntity<Farmer> request = new HttpEntity<>(farmer, headers);
 
+        System.out.println("hellofarmerauth service");
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://Farmer-Service/addFarmer",
+        		"http://farmer-service/farmer-service/addFarmer",
             request,
             String.class
         );

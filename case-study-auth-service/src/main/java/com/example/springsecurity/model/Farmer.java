@@ -1,8 +1,14 @@
 package com.example.springsecurity.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+//import com.farmer.model.Crops;
+
+//import com.farmer.model.Crops;
 
 
 
@@ -11,16 +17,16 @@ public class Farmer {
 	@Id
 	private String farmerId;
 	@Field
-	private String farmerName;
-	@Field
 	private String farmerEmail;
 	@Field
 	private String farmerPassword;
 	@Field
+	private String farmerName;
+	
+	@Field
 	private String farmerBank;
 	@Field
 	private String farmerPaytmId;
-
 	@Field
 	private String farmerAccountNo;
 	@Field
@@ -31,6 +37,8 @@ public class Farmer {
 	private String farmerLocation;
 	@Field
 	private String farmerAbout;
+//	@Field
+//	private List<Crops> crops;
 	
 	public String getFarmerName() {
 		return farmerName;

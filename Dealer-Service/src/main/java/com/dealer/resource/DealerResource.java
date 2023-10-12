@@ -28,7 +28,7 @@ import com.dealer.services.DealerService;
 
 @RestController
 
-//@RequestMapping("/dealer")
+@RequestMapping("/dealer-service")
 public class DealerResource {
 	
 	@Autowired

@@ -24,7 +24,7 @@ public class DealerService {
         HttpEntity<Dealer> request = new HttpEntity<>(dealer, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://Dealer-Service/addDealer",
+        		"http://dealer-service/dealer-service/addDealer",
             request,
             String.class
         );

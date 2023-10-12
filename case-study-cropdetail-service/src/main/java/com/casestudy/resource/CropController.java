@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.casestudy.model.Crop;
 import com.casestudy.repository.CropRepository;
 
 @RestController
+@RequestMapping("/crop-service")
 public class CropController {
 	
 	@Autowired
@@ -24,7 +26,7 @@ public class CropController {
 	@PostMapping("/addCrop")
 	public String addCrop(@RequestBody Crop crop) {
 		repository.save(crop);
-		return "added crop with id: " + crop.getFid();
+		return "added crop with id: " + crop.getCropId();
 	}
 	
 	@GetMapping("/findAllCrops")
@@ -36,11 +38,11 @@ public class CropController {
 	public Optional<Crop> getCrop(@PathVariable int id){
 		return repository.findById(id);
 	}
-	@PutMapping("updateCrops/{id}")
-	public String updateCrop(@RequestBody Crop crop) {
-		repository.save(crop);
-		return "updated crop with id: " + crop.getFid();
-	}
+//	@PutMapping("/updateCrops/{id}")
+//	public String updateCrop(@RequestBody Crop crop) {
+//		repository.save(crop);
+//		return "updated crop with id: " + crop.getFid();
+//	}
 	
 	@DeleteMapping("/deleteCrop/{id}")
 	public String deleteCrop(@PathVariable int id) {

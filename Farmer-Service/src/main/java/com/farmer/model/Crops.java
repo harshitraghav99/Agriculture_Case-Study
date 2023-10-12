@@ -10,8 +10,9 @@ public class Crops {
 	
 
 	
-	private String fid;
-	private int cropid;
+	private String farmerId;
+	
+	private String cropId;
 	private String cropname;
 	private String cropimage;
 	private String cropqlty;
@@ -20,17 +21,25 @@ public class Crops {
 	private String cropqnty;
 	private String cropdesc;
 	private String cropprice;
-	public String getFid() {
-		return fid;
+
+	public String getFarmerId() {
+		return farmerId;
 	}
-	public void setFid(String fid) {
-		this.fid = fid;
+	public void setFarmerId(String farmerId) {
+		this.farmerId = farmerId;
 	}
-	public int getCropid() {
-		return cropid;
+	private String farmerEmail;
+	public String getFarmerEmail() {
+		return farmerEmail;
 	}
-	public void setCropid(int cropid) {
-		this.cropid = cropid;
+	public void setFarmerEmail(String farmerEmail) {
+		this.farmerEmail = farmerEmail;
+	}
+	public void setCropid(String cropid) {
+		this.cropId = cropid;
+	}
+	public String getCropId() {
+		return cropId;
 	}
 	public String getCropname() {
 		return cropname;

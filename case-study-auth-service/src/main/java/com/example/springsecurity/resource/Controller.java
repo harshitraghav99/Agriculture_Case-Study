@@ -70,7 +70,7 @@ public class Controller {
 //		repository.save(farmer);
 //		System.out.println("hello"+farmer.getFarmerName());
 		farmerService.addFarmer("0", farmer);
-		
+//		System.out.println(farmer.getFarmerName());
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(farmer.getId());
 		System.out.println(farmer.getFarmerName());

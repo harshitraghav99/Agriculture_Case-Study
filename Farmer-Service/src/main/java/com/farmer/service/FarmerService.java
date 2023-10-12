@@ -52,6 +52,7 @@ public class FarmerService {
 	public String addFarmer(Farmer f)
 	{
 		f.setCrops(null);
+		System.out.println("helo farmer service");
 //		f.setFabout(null);
 		farmerRepo.save(f);
 		return "Added Farmer";
@@ -102,16 +103,24 @@ public class FarmerService {
 	}
 	
 	//Add crops by farmers
-	public ResponseEntity<String> addCrops(String fid, Crops crop)
+	public ResponseEntity<String> addCrops(String farmerEmail, Crops crop)
 	{
-
+		Farmer farmer =farmerRepo.findByFarmerEmail(farmerEmail);
+		List<Crops> crops = new ArrayList<>();
+		crops=farmer.getCrops();
+		crops.add(crop);
+		farmer.setCrops(crops);
+		farmerRepo.save(farmer);
+		crop.setFarmerId(farmer.getFarmerId());
+		crop.setFarmerEmail(farmerEmail);
+		
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://Crop-Service/addCrop",
+        		"http://crop-service/addCrop",
             request,
             String.class
         );

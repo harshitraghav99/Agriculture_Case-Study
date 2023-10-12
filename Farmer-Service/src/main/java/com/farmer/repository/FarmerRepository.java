@@ -8,5 +8,5 @@ import com.farmer.model.Farmer;
 @Repository
 public interface FarmerRepository extends MongoRepository<Farmer, String>
 {
-	Farmer findByFarmerEmail(String femail);
+	Farmer findByFarmerEmail(String farmerEmail);
 }

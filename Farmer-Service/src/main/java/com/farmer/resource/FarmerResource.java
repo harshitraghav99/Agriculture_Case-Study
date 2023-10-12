@@ -24,7 +24,7 @@ import com.farmer.service.FarmerService;
 
 @RestController
 
-//@RequestMapping("/farmer")
+@RequestMapping("/farmer-service")
 public class FarmerResource {
 
 	@Autowired
@@ -63,13 +63,14 @@ public class FarmerResource {
 	@RequestMapping(method = RequestMethod.POST, value = "/addFarmer")
 	public String addFarmer( @RequestBody Farmer farmer)
 	{
+		System.out.println("hello farmer add request");
 		return farmerService.addFarmer(farmer);
 	}
 	//add crops for farmers
-	@RequestMapping(method = RequestMethod.POST, value = "/{fid}/addcrops")
-	public ResponseEntity<String> addCrops(@PathVariable("fid") String fid, @RequestBody Crops crop)
+	@RequestMapping(method = RequestMethod.POST, value = "/{farmerEmail}/addcrops")
+	public ResponseEntity<String> addCrops(@PathVariable String farmerEmail, @RequestBody Crops crop)
 	{
-		return farmerService.addCrops(fid, crop);
+		return farmerService.addCrops(farmerEmail, crop);
 	}
 	
 	//UPDATION
