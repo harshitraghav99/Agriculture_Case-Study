@@ -67,9 +67,12 @@ public class FarmerResource {
 		return farmerService.addFarmer(farmer);
 	}
 	//add crops for farmers
-	@RequestMapping(method = RequestMethod.POST, value = "/{farmerEmail}/addcrops")
+	@RequestMapping(method = RequestMethod.POST, value = "/addcrops/{farmerEmail}")
 	public ResponseEntity<String> addCrops(@PathVariable String farmerEmail, @RequestBody Crops crop)
 	{
+		System.out.println("addCrop");
+		System.out.println(crop.getCropname());
+		System.out.println(farmerEmail);
 		return farmerService.addCrops(farmerEmail, crop);
 	}
 	

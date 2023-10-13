@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.farmer.exception.CropsNullException;
 import com.farmer.model.Crops;
 import com.farmer.model.Farmer;
 import com.farmer.model.FarmerList;
@@ -106,9 +107,17 @@ public class FarmerService {
 	public ResponseEntity<String> addCrops(String farmerEmail, Crops crop)
 	{
 		Farmer farmer =farmerRepo.findByFarmerEmail(farmerEmail);
+		
+		System.out.println(farmer.getFarmerName());
 		List<Crops> crops = new ArrayList<>();
-		crops=farmer.getCrops();
+//		try {
+		crops=farmer.getCrops();	
 		crops.add(crop);
+//		}catch(Exception e) {
+//			e.getMessage();
+//			
+//		}
+		System.out.println(crops.get(0).getCropname());
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 		crop.setFarmerId(farmer.getFarmerId());
@@ -120,7 +129,7 @@ public class FarmerService {
         HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://crop-service/addCrop",
+        		"http://crop-service/crop-service/addCrop",
             request,
             String.class
         );
@@ -130,9 +139,14 @@ public class FarmerService {
 	}
 	
 	//find all crops added by the farmer
-	public List<Crops> findCrops(String fid)
+	public List<Crops> findCrops(String farmerEmail)
 	{
 //		Crops crops = restTemplate.getForObject("http://Crop-Service/addCrop", Crops.class);
+		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEmail);
+		ResponseEntity<Crops[]> response =
+				  restTemplate.getForEntity(
+				  "http://localhost:8082/crop-service/getCropsEmail/{farmerEmail}",
+				  Crops[].class);
 
 		return null;
 		//search functionality yet to be deployed

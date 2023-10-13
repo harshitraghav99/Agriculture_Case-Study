@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.casestudy.model.Crop;
 
-public interface CropRepository extends MongoRepository<Crop, Integer> {
+public interface CropRepository extends MongoRepository<Crop, String> {
+	find
 
 }
