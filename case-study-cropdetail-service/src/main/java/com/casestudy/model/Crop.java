@@ -43,10 +43,10 @@ public class Crop {
 	public void setCropId(String cropId) {
 		this.cropId = cropId;
 	}
-	public String getCropname() {
+	public String getCropName() {
 		return cropname;
 	}
-	public void setCropname(String cropname) {
+	public void setCropName(String cropname) {
 		this.cropname = cropname;
 	}
 	public String getCropimage() {
