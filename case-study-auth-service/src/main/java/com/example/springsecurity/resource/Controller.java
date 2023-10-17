@@ -105,7 +105,7 @@ public class Controller {
 		dealerService.addDealer("0", dealer);
 //		dealerRepository.save(dealer);
 		UserInfo userInfo = new UserInfo();
-		userInfo.setId(dealer.getId());
+//		userInfo.setId(dealer.getId());
 		userInfo.setName(dealer.getDealerName());
 		userInfo.setPassword(passwordEncoder.encode(dealer.getDealerPassword()));
 		userInfo.setRoles("ROLE_DEALER");

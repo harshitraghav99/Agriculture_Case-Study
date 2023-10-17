@@ -85,22 +85,104 @@ public class FarmerService {
 	//CROP OPERATIONS
 	
 	//fetch crops for farmers
-	public Crops fetchCrop(String fid, int cropid)
+	public List<Crops> fetchCropsFarmerEmail(String farmerEmail)
 	{
-		/*Crops nullobject = new Crops(); //null object
-		for(int i = 0; i < farmerRepo.findById(fid).get().getCrops().size(); i++)
-		{
-			Crops storecrops = farmerRepo.findById(fid).get().getCrops().get(i);
-			if(storecrops.getCropid() == cropid)  //if(fob.getSource().equals(source) && fob.getDest().equals(dest))
-			{
-				return storecrops;
-			}
-		}
-		return nullobject;*/
-		Crops crop = restTemplate.getForObject("http://Crop-Service/findCrop/{fid}", Crops.class);
+//		System.out.println("hello from farmer service "+farmerEmail);
+		List<Crops> crops = restTemplate.getForObject("http://crop-service/crop-service/getCropsEmail/{farmerEmail}", List.class,farmerEmail);
+		return crops;
+		
+		
+	}
+	
+	public Crops fetchCropsFarmerEmailCropName(String farmerEmail,String cropName)
+	{
+//		System.out.println("hello from farmer service "+farmerEmail+cropName);
+		Crops crop = restTemplate.getForObject("http://crop-service/crop-service/getCropsEmailCropName/{farmerEmail}/{cropName}", 
+				Crops.class,
+				farmerEmail,
+				cropName);
+		
 		return crop;
 		
 		
+	}
+	
+	public void updateCropInc(String farmerEamil, String cropName, int qty) {
+		
+		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
+//		System.out.println(qty +"quantity");
+		List<Crops> crops = farmer.getCrops();
+		int i = 0;
+		for (Crops crop : crops) {
+			if(crop.getCropName().equalsIgnoreCase(cropName)) {
+				int quantity=Integer.parseInt(crop.getCropqnty()) + qty;
+//				System.out.println(quantity+ "after add");
+				crops.remove(i);
+				
+				crop.setCropqnty(String.valueOf(quantity));
+//				System.out.println(crop.getCropqnty());
+				crops.add(i, crop);
+				break;
+			}
+			i++;
+		}
+		farmer.setCrops(crops);
+		farmerRepo.save(farmer);
+	
+		String baseUrl= "http://crop-service/crop-service/updateCropInc/"+farmerEamil+"/"+cropName+"/"+qty;
+		restTemplate.put(baseUrl, String.class);
+	}
+	
+	
+	public void updateCropDec(String farmerEamil, String cropName, int qty) {
+		
+		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
+//		System.out.println(qty +"quantity");
+		List<Crops> crops = farmer.getCrops();
+		int i = 0;
+		for (Crops crop : crops) {
+			if(crop.getCropName().equalsIgnoreCase(cropName)) {
+				int quantity=Integer.parseInt(crop.getCropqnty()) - qty;
+//				System.out.println(quantity+ "after add");
+				crops.remove(i);
+				
+				crop.setCropqnty(String.valueOf(quantity));
+//				System.out.println(crop.getCropqnty());
+				crops.add(i, crop);
+				break;
+			}
+			i++;
+		}
+		farmer.setCrops(crops);
+		farmerRepo.save(farmer);
+	
+		String baseUrl= "http://crop-service/crop-service/updateCropDec/"+farmerEamil+"/"+cropName+"/"+qty;
+		restTemplate.put(baseUrl, String.class);
+	}
+	
+	
+	
+	public void deleteCrop(String farmerEamil, String cropName) {
+		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
+//		System.out.println(qty +"quantity");
+		System.out.println(farmer.getFarmerName());
+		List<Crops> crops = farmer.getCrops();
+		System.err.println(crops.isEmpty());
+		int i = 0;
+		for (Crops crop : crops) {
+			if(crop.getCropName().equalsIgnoreCase(cropName)) {
+				System.out.println("ïnLoop");
+				break;
+			}
+			i++;
+			
+		}
+		crops.remove(i);
+		farmer.setCrops(crops);
+		farmerRepo.save(farmer);
+		
+		String baseUrl= "http://crop-service/crop-service/deleteCrop/"+farmerEamil+"/"+cropName;
+		restTemplate.delete(baseUrl);
 	}
 	
 	//Add crops by farmers
@@ -117,10 +199,11 @@ public class FarmerService {
 //			e.getMessage();
 //			
 //		}
-		System.out.println(crops.get(0).getCropname());
+		System.out.println(crops.get(0).getCropName());
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 		crop.setFarmerId(farmer.getFarmerId());
+		System.out.println(crop.getCropName());
 		crop.setFarmerEmail(farmerEmail);
 		
 		HttpHeaders headers = new HttpHeaders();

@@ -13,7 +13,7 @@ public class Crops {
 	private String farmerId;
 	
 	private String cropId;
-	private String cropname;
+	private String cropName;
 	private String cropimage;
 	private String cropqlty;
 	private String croplocation;
@@ -41,11 +41,11 @@ public class Crops {
 	public String getCropId() {
 		return cropId;
 	}
-	public String getCropname() {
-		return cropname;
+	public String getCropName() {
+		return cropName;
 	}
-	public void setCropname(String cropname) {
-		this.cropname = cropname;
+	public void setCropName(String cropname) {
+		this.cropName = cropname;
 	}
 	public String getCropimage() {
 		return cropimage;

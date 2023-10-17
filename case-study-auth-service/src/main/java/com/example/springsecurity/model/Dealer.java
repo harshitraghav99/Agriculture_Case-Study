@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "Dealers")
 public class Dealer {
 
-	@Id
-	private String dealerId;
+//	@Id
+//	private String dealerId;
 	@Field 	//username
 	private String dealerEmail;
 	@Field	//password
@@ -30,12 +30,12 @@ public class Dealer {
 	private String dealerAccountNo;
 	@Field
 	private String dealerPaytmId;
-	public String getId() {
-		return dealerId;
-	}
-	public void setId(String id) {
-		this.dealerId = id;
-	}
+//	public String getId() {
+//		return dealerId;
+//	}
+//	public void setId(String id) {
+//		this.dealerId = id;
+//	}
 	public String getDealerName() {
 		return dealerName;
 	}

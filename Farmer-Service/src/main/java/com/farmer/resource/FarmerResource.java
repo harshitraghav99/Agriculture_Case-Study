@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -71,10 +73,50 @@ public class FarmerResource {
 	public ResponseEntity<String> addCrops(@PathVariable String farmerEmail, @RequestBody Crops crop)
 	{
 		System.out.println("addCrop");
-		System.out.println(crop.getCropname());
+		System.out.println(crop.getCropName());
 		System.out.println(farmerEmail);
 		return farmerService.addCrops(farmerEmail, crop);
 	}
+	
+	
+	
+	@GetMapping("/fetchCropsFarmerEmail/{farmerEmail}")
+	public List<Crops> findCrops(@PathVariable("farmerEmail") String farmerEmail)
+	{
+//		System.out.println(farmerEmail+"hello");
+		return farmerService.fetchCropsFarmerEmail(farmerEmail);
+	}
+	@GetMapping("/fetchCropsFarmerEmailCropName/{farmerEmail}/{cropName}")
+	public Crops fetchCropsFarmerEmailCropName(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName)
+	{
+//		System.out.println(farmerEmail+cropName+"hello");
+		return farmerService.fetchCropsFarmerEmailCropName(farmerEmail,cropName);
+	}
+	
+	@PutMapping("/updateCropInc/{farmerEmail}/{cropName}/{qty}")
+	public void updateCropInc(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName ,@PathVariable int qty)
+	{
+//		System.out.println(farmerEmail+cropName+"hello");
+		farmerService.updateCropInc(farmerEmail,cropName,qty);
+		return;
+	}
+	
+	@PutMapping("/updateCropDec/{farmerEmail}/{cropName}/{qty}")
+	public void updateCropDec(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName ,@PathVariable int qty)
+	{
+//		System.out.println(farmerEmail+cropName+"hello");
+		farmerService.updateCropDec(farmerEmail,cropName,qty);
+		return;
+	}
+	
+	@DeleteMapping("/deleteCrop/{farmerEmail}/{cropName}")
+	public void deleteCrop(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName)
+	{
+		System.out.println(farmerEmail+cropName+"hello");
+		farmerService.deleteCrop(farmerEmail,cropName);
+		return;
+	}
+	
 	
 	//UPDATION
 	
@@ -89,7 +131,7 @@ public class FarmerResource {
 //	@RequestMapping(method = RequestMethod.PUT, value = "/{fid}/updateCrops/{cropid}")
 //	public String updateCrops(@PathVariable("fid") String fid, @PathVariable("cropid") int cropid, @RequestBody Crops crop)
 //	{
-//		return farmerService.updateCrop(fid, cropid, crop);
+//		return farmerService.updateCrop(fid, cropid,} crop);
 //	}
 	
 	//DELETION

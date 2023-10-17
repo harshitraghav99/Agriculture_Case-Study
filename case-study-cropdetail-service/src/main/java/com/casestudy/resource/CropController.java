@@ -29,6 +29,7 @@ public class CropController {
 	
 	@PostMapping("/addCrop")
 	public String addCrop(@RequestBody Crop crop) {
+		System.out.println(crop.getCropName());
 		repository.save(crop);
 		return "added crop with id: " + crop.getCropId();
 	}
@@ -44,7 +45,7 @@ public class CropController {
 	}
 	@GetMapping("/getCropsEmail/{farmerEmail}")
 	public List<Crop> getCropsEmail(@PathVariable String farmerEmail){
-		
+//		System.out.println(farmerEmail+"from crop mapping");
 		return cropService.getCropsEmail(farmerEmail);
 	}
 	@GetMapping("/getCropsEmailCropName/{farmerEmail}/{cropName}")

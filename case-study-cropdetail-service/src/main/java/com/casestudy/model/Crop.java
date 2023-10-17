@@ -11,7 +11,7 @@ public class Crop {
 //	private String fid;
 	@Id
 	private String cropId;
-	private String cropname;
+	private String cropName;
 	private String cropimage;
 	//yet to learn and add
 	private String cropqlty;
@@ -44,10 +44,10 @@ public class Crop {
 		this.cropId = cropId;
 	}
 	public String getCropName() {
-		return cropname;
+		return cropName;
 	}
 	public void setCropName(String cropname) {
-		this.cropname = cropname;
+		this.cropName = cropname;
 	}
 	public String getCropimage() {
 		return cropimage;

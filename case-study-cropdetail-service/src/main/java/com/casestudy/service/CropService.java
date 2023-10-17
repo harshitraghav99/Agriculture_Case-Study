@@ -22,10 +22,10 @@ public class CropService {
 		
 	}
 	public Crop getCropEmailCropName(String farmerEmail,String cropName) {
-		return cropRepository.findByFarmerEmailAndCropname(farmerEmail, cropName);
+		return cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 	}
 	public Crop updateCropInc(String farmerEmail,String cropName,int qty) {
-		Crop crop = cropRepository.findByFarmerEmailAndCropname(farmerEmail, cropName);
+		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 		System.out.println(crop.getCropName());
 		int quantity = Integer.parseInt(crop.getCropqnty());
 		quantity+=qty;
@@ -35,7 +35,7 @@ public class CropService {
 	}
 	public Crop updateCropDec(String farmerEmail, String cropName, int qty) {
 		// TODO Auto-generated method stub
-		Crop crop = cropRepository.findByFarmerEmailAndCropname(farmerEmail, cropName);
+		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 		System.out.println(crop.getCropName());
 		int quantity = Integer.parseInt(crop.getCropqnty());
 		quantity-=qty;
@@ -46,7 +46,7 @@ public class CropService {
 	}
 	public String deleteCrop(String farmerEmail, String cropName) {
 		// TODO Auto-generated method stub
-		Crop crop = cropRepository.findByFarmerEmailAndCropname(farmerEmail, cropName);
+		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 		cropRepository.delete(crop);
 		return "deleted";
 	}

@@ -23,7 +23,7 @@ export class LoginPageComponent {
       console.log(this.credentials);
       this.loginService.doLogin(this.credentials).subscribe({
         next:(response:string)=>{
-          console.log(response)
+          // console.log(response)
           this.loginService.loginUser(response)
           if(this.loginService.getRoles(response)==="ROLE_DEALER" ) {
             // console.log("dealer");
