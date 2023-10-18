@@ -8,7 +8,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
 public class ApiGatewayApplication {
 
-	@LoadBalanced
+//	@LoadBalanced
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}

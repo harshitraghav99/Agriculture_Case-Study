@@ -21,9 +21,10 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 	private static final String Secret="5367566859703373367639792F423F452848284D6251655468576D5A71347437";
 
-	public String generateToken(String username,String roles) {
+	public String generateToken(String username,String roles,String email) {
 		Map<String,Object> claims=new HashMap<>();
 		claims.put("roles", roles);
+		claims.put("email", email);
 		return createToken(claims,username);
 	}
 	public String extractUsername(String token) {

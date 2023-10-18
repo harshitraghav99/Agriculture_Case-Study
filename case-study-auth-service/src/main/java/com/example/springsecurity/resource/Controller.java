@@ -78,6 +78,7 @@ public class Controller {
 		System.out.println(farmer.getFarmerPassword());
 		userInfo.setPassword(passwordEncoder.encode(farmer.getFarmerPassword()));
 		userInfo.setRoles("ROLE_FARMER");
+		userInfo.setEmail(farmer.getFarmerEmail());
 		userInfoRepository.save(userInfo);
 //		AuthRequest authRequest = new AuthRequest(farmer.getFarmerName(),farmer.getPassword());
 //		Authentication authentication= authenticationManager.authenticate(
@@ -109,6 +110,7 @@ public class Controller {
 		userInfo.setName(dealer.getDealerName());
 		userInfo.setPassword(passwordEncoder.encode(dealer.getDealerPassword()));
 		userInfo.setRoles("ROLE_DEALER");
+		userInfo.setEmail(dealer.getDealerEmail());
 		userInfoRepository.save(userInfo);
 //		AuthRequest authRequest = new AuthRequest(dealer.getDealerName(),dealer.getDealerPassword());
 //		Authentication authentication= authenticationManager.authenticate(
@@ -142,7 +144,7 @@ public class Controller {
 		if(authentication.isAuthenticated()) {
 			System.out.println("auth"+authRequest.getUsername());
 			UserInfo user =  userInfoRepository.findByName(authRequest.getUsername()).get();
-			String token=jwtService.generateToken(user.getName(),user.getRoles());
+			String token=jwtService.generateToken(user.getName(),user.getRoles(),user.getEmail());
 //			System.out.println(token);
 			return ResponseEntity.ok(token);	
 		}

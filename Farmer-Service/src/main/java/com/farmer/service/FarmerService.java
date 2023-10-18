@@ -88,7 +88,7 @@ public class FarmerService {
 	public List<Crops> fetchCropsFarmerEmail(String farmerEmail)
 	{
 //		System.out.println("hello from farmer service "+farmerEmail);
-		List<Crops> crops = restTemplate.getForObject("http://crop-service/crop-service/getCropsEmail/{farmerEmail}", List.class,farmerEmail);
+		List<Crops> crops = restTemplate.getForObject("http://localhost:8090/crop-service/getCropsEmail/{farmerEmail}", List.class,farmerEmail);
 		return crops;
 		
 		
@@ -212,7 +212,7 @@ public class FarmerService {
         HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://crop-service/crop-service/addCrop",
+        		"http://localhost:8090/crop-service/addCrop",
             request,
             String.class
         );
@@ -228,7 +228,7 @@ public class FarmerService {
 		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEmail);
 		ResponseEntity<Crops[]> response =
 				  restTemplate.getForEntity(
-				  "http://localhost:8082/crop-service/getCropsEmail/{farmerEmail}",
+				  "http://localhost:8090/crop-service/getCropsEmail/{farmerEmail}",
 				  Crops[].class);
 
 		return null;

@@ -7,7 +7,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 @SpringBootApplication
 public class CaseStudyCropdetailServiceApplication {
 
-	@LoadBalanced
+//	@LoadBalanced
 	public static void main(String[] args) {
 		SpringApplication.run(CaseStudyCropdetailServiceApplication.class, args);
 	}

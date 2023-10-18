@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class CaseStudyAuthServiceApplication {
 
 	@Bean
-	@LoadBalanced
+//	@LoadBalanced
 	public RestTemplate getTemplate() 
 	{
 		return new RestTemplate();

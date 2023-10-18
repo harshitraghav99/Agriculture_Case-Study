@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class DiscoveryServerApplication {
 
 	@Bean
-	@LoadBalanced
+//	@LoadBalanced
 	public RestTemplate getTemplate() 
 	{
 		return new RestTemplate();

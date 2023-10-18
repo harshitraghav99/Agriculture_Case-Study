@@ -26,7 +26,7 @@ public class FarmerService {
 
         System.out.println("hellofarmerauth service");
         ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://farmer-service/farmer-service/addFarmer",
+        		"http://localhost:8090/farmer-service/addFarmer",
             request,
             String.class
         );

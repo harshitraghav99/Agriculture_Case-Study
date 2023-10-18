@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class FarmerServiceApplication {
 	@Bean
-	@LoadBalanced
+//	@LoadBalanced
 	public RestTemplate getTemplate() 
 	{
 		return new RestTemplate();
