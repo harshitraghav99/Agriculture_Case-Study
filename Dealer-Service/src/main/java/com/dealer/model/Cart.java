@@ -9,18 +9,28 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 
 
-@Document("croplist")
-public class CropsList {
+@Document("Cart")
+public class Cart {
 
+	public String getDealerEmail() {
+		return dealerEmail;
+	}
+	public void setDealerEmail(String dealerEmail) {
+		this.dealerEmail = dealerEmail;
+	}
 	@Id
-	private  String randomid;
+	private  String cartId;
 	@Field
 	private  List<Crops> crops;
-	public String getRandomid() {
-		return randomid;
+	@Field
+	private String dealerEmail;
+	
+	
+	public String getCartId() {
+		return cartId;
 	}
-	public void setRandomid(String randomid) {
-		this.randomid = randomid;
+	public void setCartId(String cartId) {
+		this.cartId = cartId;
 	}
 	public List<Crops> getCrops() {
 		return crops;

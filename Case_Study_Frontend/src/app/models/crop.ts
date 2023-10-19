@@ -1,6 +1,6 @@
 export class Crop {
     constructor(){
-        this.cropId = '';
+        // this.cropId = '';
         this.cropName = '';
         this.cropimage = '';
         this.cropqlty = '';
@@ -13,7 +13,7 @@ export class Crop {
         this.farmerEmail = '';
 
     }
-    cropId: string;
+    cropId?: string;
     cropName: string;
     cropimage: string;
     cropqlty: string;

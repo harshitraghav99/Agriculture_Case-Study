@@ -10,7 +10,7 @@ public class Crops {
 	
 
 	
-	private String farmerId;
+//	private String farmerId;
 	
 	private String cropId;
 	private String cropName;
@@ -22,12 +22,12 @@ public class Crops {
 	private String cropdesc;
 	private String cropprice;
 
-	public String getFarmerId() {
-		return farmerId;
-	}
-	public void setFarmerId(String farmerId) {
-		this.farmerId = farmerId;
-	}
+//	public String getFarmerId() {
+//		return farmerId;
+//	}
+//	public void setFarmerId(String farmerId) {
+//		this.farmerId = farmerId;
+//	}
 	private String farmerEmail;
 	public String getFarmerEmail() {
 		return farmerEmail;

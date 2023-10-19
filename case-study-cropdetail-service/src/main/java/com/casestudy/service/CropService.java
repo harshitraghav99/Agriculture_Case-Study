@@ -17,6 +17,10 @@ public class CropService {
 	CropRepository cropRepository;
 	
 //	public Optional<List<Crop>> getCropsEmail(String farmerEmail){
+	public List<Crop> getAllCrops(){
+		return cropRepository.findAll();
+	}
+	
 	public List<Crop> getCropsEmail(String farmerEmail){
 		return cropRepository.findByFarmerEmail(farmerEmail);		
 		
@@ -49,6 +53,12 @@ public class CropService {
 		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 		cropRepository.delete(crop);
 		return "deleted";
+	}
+
+	public Crop getCropById(String id) {
+		// TODO Auto-generated method stub
+		
+		return cropRepository.findById(id).get();
 	}
 
 }

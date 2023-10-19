@@ -15,8 +15,12 @@ export class FarmerLandingPageComponent {
   }
   crops:Crop[]=[];
   cropTemp:Crop[]=[];
+  crop=new Crop();
   // farmer:Farmer;
+  cropName='';
+  inputValue:any;
 
+  quantityTemp=0;
   quantity:number=0;
   
 
@@ -25,6 +29,42 @@ export class FarmerLandingPageComponent {
     // this.getFarmer();
     console.log(this.quantity)
    
+  }
+  addCrops(){
+    const email=this.farmerService.getFarmerEmail(this.farmerService.getToken())
+    this.crop.farmerEmail=email;
+
+    this.farmerService.addCrops(this.crop).subscribe({
+      next:(response:any)=>{
+        window.location.reload();
+      },
+      error:(error:any)=>console.log(error)
+    })
+  }
+  captureInput(event: Event): void {
+    this.inputValue = (event.target as HTMLInputElement).value;
+  }
+  updateCropsIncrease(cropName:any){
+    // this.quantity=this.quantityTemp;
+
+    console.log(this.quantity,this.cropName);
+    const email=this.farmerService.getFarmerEmail(this.farmerService.getToken());
+    this.farmerService.updateCropsIncrease(cropName,this.inputValue,email).subscribe({
+      next:(response:any)=>{
+        window.location.reload();
+      },
+      error:(error:any)=>console.log(error)})
+  }
+  updateCropsDecrease(){
+
+    console.log(this.quantity,this.cropName);
+    const email=this.farmerService.getFarmerEmail(this.farmerService.getToken());
+    this.farmerService.updateCropsDecrease(this.cropName,this.quantity,email).subscribe({
+      next:(response:any)=>{
+        console.log(response)
+        window.location.reload();
+      },
+      error:(error:any)=>console.log(error)})
   }
   getCrops():void{
     const email=this.farmerService.getFarmerEmail(this.farmerService.getToken())
@@ -45,10 +85,17 @@ export class FarmerLandingPageComponent {
     console.log(`New quantity for ${crop.cropName}: ${crop.cropqnty}`);
   }
 
+  deleteCrop(cropName:string){
+    const email=this.farmerService.getFarmerEmail(this.farmerService.getToken())
+    this.farmerService.deleteCrop(cropName,email).subscribe({
+      next:(response:any)=>{
+        window.location.reload();
+      },
+      error:(error:any)=>console.log(error)})
+  }
 
-  // getFarmer(){
-  //   const email=this.farmerService.getFarmerEmail(this.farmerService.getToken())
-  // }
+
+  
 
   
 }

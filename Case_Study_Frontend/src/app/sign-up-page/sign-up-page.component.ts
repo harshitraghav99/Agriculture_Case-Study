@@ -48,7 +48,7 @@ export class SignUpPageComponent {
   }
 
   onSubmit(){
-    console.log(this.show + "hello signupo compo")
+    console.log(this.show + "hello signup compo")
     if(this.show==='farmer'){
 
       if(this.farmerCredentials.farmerName!==null 

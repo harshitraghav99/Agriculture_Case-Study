@@ -21,6 +21,7 @@ export class LoginPageComponent {
     (this.credentials.username!= null && this.credentials.password!= null)){
 
       console.log(this.credentials);
+      
       this.loginService.doLogin(this.credentials).subscribe({
         next:(response:string)=>{
           // console.log(response)

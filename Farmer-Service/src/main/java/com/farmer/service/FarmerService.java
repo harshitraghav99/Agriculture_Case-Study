@@ -97,7 +97,7 @@ public class FarmerService {
 	public Crops fetchCropsFarmerEmailCropName(String farmerEmail,String cropName)
 	{
 //		System.out.println("hello from farmer service "+farmerEmail+cropName);
-		Crops crop = restTemplate.getForObject("http://crop-service/crop-service/getCropsEmailCropName/{farmerEmail}/{cropName}", 
+		Crops crop = restTemplate.getForObject("http://localhost:8090/crop-service/getCropsEmailCropName/{farmerEmail}/{cropName}", 
 				Crops.class,
 				farmerEmail,
 				cropName);
@@ -129,7 +129,7 @@ public class FarmerService {
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 	
-		String baseUrl= "http://crop-service/crop-service/updateCropInc/"+farmerEamil+"/"+cropName+"/"+qty;
+		String baseUrl= "http://localhost:8090/crop-service/updateCropInc/"+farmerEamil+"/"+cropName+"/"+qty;
 		restTemplate.put(baseUrl, String.class);
 	}
 	
@@ -156,7 +156,7 @@ public class FarmerService {
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 	
-		String baseUrl= "http://crop-service/crop-service/updateCropDec/"+farmerEamil+"/"+cropName+"/"+qty;
+		String baseUrl= "http://localhost:8090/crop-service/updateCropDec/"+farmerEamil+"/"+cropName+"/"+qty;
 		restTemplate.put(baseUrl, String.class);
 	}
 	
@@ -177,11 +177,12 @@ public class FarmerService {
 			i++;
 			
 		}
+		System.out.println(i);
 		crops.remove(i);
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 		
-		String baseUrl= "http://crop-service/crop-service/deleteCrop/"+farmerEamil+"/"+cropName;
+		String baseUrl= "http://localhost:8090/crop-service/deleteCrop/"+farmerEamil+"/"+cropName;
 		restTemplate.delete(baseUrl);
 	}
 	
@@ -193,15 +194,30 @@ public class FarmerService {
 		System.out.println(farmer.getFarmerName());
 		List<Crops> crops = new ArrayList<>();
 //		try {
-		crops=farmer.getCrops();	
-		crops.add(crop);
-//		}catch(Exception e) {
-//			e.getMessage();
-//			
-//		}
-		System.out.println(crops.get(0).getCropName());
-		farmer.setCrops(crops);
+		
+		if(farmer.getCrops()==null) {
+			System.err.println("null");
+			crops.add(crop);
+			farmer.setCrops(crops);
+		}
+		else if(farmer.getCrops().isEmpty()) {
+			System.err.println("empty");
+			crops.add(crop);
+			farmer.setCrops(crops);
+		}
+		
+		else {
+			System.err.println(" not empty");
+			crops=farmer.getCrops();	
+			crops.add(crop);
+			farmer.setCrops(crops);
+		}
+//		
+		for (Crops crops2 : farmer.getCrops()) {
+			System.out.println(crops2.getCropName()+" crop");
+		}
 		farmerRepo.save(farmer);
+		
 		crop.setFarmerId(farmer.getFarmerId());
 		System.out.println(crop.getCropName());
 		crop.setFarmerEmail(farmerEmail);

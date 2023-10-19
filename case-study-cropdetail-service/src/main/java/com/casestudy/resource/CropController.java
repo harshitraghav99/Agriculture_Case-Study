@@ -36,14 +36,16 @@ public class CropController {
 		return "added crop with id: " + crop.getCropId();
 	}
 	
-	@GetMapping("/findAllCrops")
+	
+	@GetMapping("/getAllCrops")
 	public List<Crop> getCrops(){
-		return repository.findAll();
+
+		return cropService.getAllCrops();
 	}
 	
-	@GetMapping("/findCrop/{id}")
-	public Optional<Crop> getCrop(@PathVariable String id){
-		return repository.findById(id);
+	@GetMapping("/getCropById/{id}")
+	public Crop getCropById(@PathVariable String id){
+		return cropService.getCropById(id);
 	}
 	@GetMapping("/getCropsEmail/{farmerEmail}")
 	public List<Crop> getCropsEmail(@PathVariable String farmerEmail){

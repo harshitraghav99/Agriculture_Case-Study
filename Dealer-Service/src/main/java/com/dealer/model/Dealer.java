@@ -23,6 +23,7 @@ public class Dealer {
 	@Field
 	private String dealerPhone;
 	
+	
 	@Field
 	private String dealerLocation;
 	@Field
@@ -35,6 +36,15 @@ public class Dealer {
 	private String dealerAccountNo;
 	@Field
 	private String dealerPaytmId;
+	@Field
+	private Cart dealerCart;
+	
+	public Cart getDealerCart() {
+		return dealerCart;
+	}
+	public void setDealerCart(Cart dealerCart) {
+		this.dealerCart = dealerCart;
+	}
 	public String getDealerId() {
 		return dealerId;
 	}

@@ -1,4 +1,3 @@
- 
 <!-- <section class="vh-100" style="background-color: #eee;">'
   '
     <div class="container h-100">
@@ -34,50 +33,76 @@
       </div>
     </div>
   </section> -->
-  <div class="context">
+<div class="context">
 
-    <div class = "containerBox">
-        <div class="parent">
-          <div class = "formBody">
-            <h2 class = "addCropHeading">Increase Crop Quantity</h2>
-            <input type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Name">
-            <input type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Quantity">
-          <button class = "addCropButton">update Crop</button>
+  <div class="containerBox">
+    <div class="parent">
+      <div class="formBody">
+        <h2 class="addCropHeading">Increase Crop Quantity</h2>
+        <input [(ngModel)]="cropName" type="text" id="cropName" name="cropName" class="formInput"
+          placeholder="Crop Name">
+        <input [(ngModel)]="quantity" type="number" id="cropName" name="cropName" class="formInput"
+          placeholder="Crop Quantity">
+        <!-- <button (click)="updateCropsIncrease()" class="addCropButton">Increase Crop Quantity</button> -->
+        <button (click)="updateCropsDecrease()" class="addCropButton">Decrease Crop Quantity</button>
+      </div>
+      <div *ngFor="let crop of crops" class="Cardd">
+
+        <div class="cardRow">
+          <div class="farmerDetailBox">
+            <p class="cropName">{{crop.cropName}} </p>
+            <p class="cropqlt">{{crop.cropqlty}}</p>
+            <p class="cropqlt">{{crop.cropprice}} rs/kg</p>
           </div>
-          <div *ngFor="let crop of crops"  class="Cardd">
-    
-            <div class="cardRow">
-              <div class="farmerDetailBox">
-                <p class = "cropName">{{crop.cropName}} </p>
-                <p class  ="cropqlt">{{crop.cropqlty}}</p>
-                <p class  ="cropqlt">{{crop.cropprice}} rs/kg</p>
-              </div>
-              <div class="quantityBar">
-                <!-- <input [(ngModel)] ="crop.cropqnty" type="text" id="quantity" name="quantity" class="cardInput" placeholder="Enter Quantity">
+          <div class="quantityBar">
+            <!-- <input [(ngModel)] ="crop.cropqnty" type="text" id="quantity" name="quantity" class="cardInput" placeholder="Enter Quantity">
     
                 <button class="quantityButton">+</button>
                 <button class="quantityButton">-</button> -->
-                <p>available{{crop.cropqnty}} kgs</p>
-                <button class = "buyButton">Delete</button>
-              </div>
-    
-            </div>
+            <p>available{{crop.cropqnty}} kgs</p>
+            <!-- <input [(ngModel)]="quantityTemp" type =text > -->
+            <input type="text" (input)="captureInput($event)" placeholder="Enter Value">
+            
+            <button (click)="updateCropsIncrease(crop.cropName)"> update</button>
+            <button (click)="deleteCrop(crop.cropName)" class="buyButton" >Delete</button>
           </div>
-       
-        
-        
-    
-    
-    
+
         </div>
-    <div class = "parentForm">
-     <div class = "formBody">
-      <h2 class = "addCropHeading">Add Crop</h2>
-      <input type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Name">
-      <input type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Quantity">
-    <button class = "addCropButton">Add Crop</button>
-    </div>
-   
-    </div>
       </div>
-      </div>
+
+
+
+
+
+
+    </div>
+    <div class="parentForm">
+      <form (ngSubmit)="addCrops()">
+        <div class="formBody">
+          <h2 class="addCropHeading">Add Crop</h2>
+          <input [(ngModel)]="crop.cropName" type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Name">
+          <!-- <input [(ngModel)]="crop.cr" type="text" id="cropImage" name="cropImage" class="formInput" placeholder="Crop Image"> -->
+          <input [(ngModel)]="crop.cropqlty" type="text" id="cropQuality" name="cropQuality" class="formInput" placeholder="Crop Quality">
+          <input [(ngModel)]="crop.croplocation" type="text" id="cropLocation" name="cropLocation" class="formInput" placeholder="Crop Location">
+          <input [(ngModel)]="crop.cropcontact" type="text" id="cropContact" name="cropContact" class="formInput" placeholder="Crop Contact">
+          <input [(ngModel)]="crop.cropqnty" type="text" id="cropQuantity" name="cropQuantity" class="formInput" placeholder="Crop Quantity">
+          <input [(ngModel)]="crop.cropdesc" type="text" id="cropDescription" name="cropDescription" class="formInput"
+            placeholder="Crop Description">
+          <input [(ngModel)]="crop.cropprice" type="text" id="cropPrice" name="cropPrice" class="formInput" placeholder="Crop Price">
+          <button type="submit" class="addCropButton">Add Crop</button>
+        </div>
+      </form>
+
+    </div>
+    <!-- <div class="formBody">
+      <h2 class="addCropHeading">Delete Crop</h2>
+      <input [(ngModel)]="cropName" type="text" id="cropName" name="cropName" class="formInput"
+        placeholder="Crop Name">
+       <input [(ngModel)]="quantity" type="number" id="cropName" name="cropName" class="formInput"
+        placeholder="Crop Quantity">
+      <button (click)= class="addCropButton">Delete</button>
+      
+    </div> -->
+  </div>
+
+</div>

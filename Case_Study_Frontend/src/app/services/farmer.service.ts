@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Crop } from '../models/crop';
@@ -12,11 +12,19 @@ export class FarmerService {
   constructor(private http:HttpClient) { }
   url="http://localhost:8090/farmer-service";
 
+  addCrops(crop:Crop){
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      // 'Authorization': "Basic" + btoa(credentials)
+  });
+  return this.http.post(`${this.url}/addcrops/${crop.farmerEmail}`,crop,{headers,responseType:'text'})
+  }
+
   getCrops(email:string){
     return this.http.get<Crop[]>(`${this.url}/fetchCropsFarmerEmail/${email}`);
   }
   getFarmerName(){
-    return this.http.get
+    // return this.http.get
   }
   getFarmerEmail(token:any){
     const payloadEmail=JSON.parse(atob(token.split('.')[1]));
@@ -29,4 +37,20 @@ export class FarmerService {
   // getFarmer(email:string){
   //   return this.http.get<Farmer>(`${this.url}/fetchCropsFarmerEmail/${email}`);
   // }
+
+
+  updateCropsIncrease(cropName:string,quantity:number,email:string){
+
+    return this.http.put(`${this.url}/updateCropInc/${email}/${cropName}/${quantity}`,null);
+
+  }
+  updateCropsDecrease(cropName:string,quantity:number,email:string){
+
+    return this.http.put(`${this.url}/updateCropDec/${email}/${cropName}/${quantity}`,null);
+
+  }
+  deleteCrop(cropName:string,email:string){
+    return this.http.delete(`${this.url}/deleteCrop/${email}/${cropName}`);
+
+  }
 }

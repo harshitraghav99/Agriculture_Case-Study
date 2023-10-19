@@ -1,6 +1,7 @@
 package com.dealer.model;
 
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -9,9 +10,10 @@ public class Crops {
 	
 	
 	
-	private  String fid;
-	private  int cropid;
-	private  String cropname;
+//	private  String fid;
+	@Id
+	private  String cropId;
+	private  String cropName;
 	private  String cropimage;
 	private  String cropqlty;
 	private  String cropdesc;
@@ -19,23 +21,25 @@ public class Crops {
 	private  String cropcontact;
 	private  String cropqnty;
 	private  String cropprice;
-	public String getFid() {
-		return fid;
+	private String farmerEmail;
+	
+	public String getFarmerEmail() {
+		return farmerEmail;
 	}
-	public void setFid(String fid) {
-		this.fid = fid;
+	public void setFarmerEmail(String farmerEmail) {
+		this.farmerEmail = farmerEmail;
 	}
-	public int getCropid() {
-		return cropid;
+	public String getCropId() {
+		return cropId;
 	}
-	public void setCropid(int cropid) {
-		this.cropid = cropid;
+	public void setCropid(String cropId) {
+		this.cropId = cropId;
 	}
-	public String getCropname() {
-		return cropname;
+	public String getCropName() {
+		return cropName;
 	}
-	public void setCropname(String cropname) {
-		this.cropname = cropname;
+	public void setCropName(String cropname) {
+		this.cropName = cropname;
 	}
 	public String getCropimage() {
 		return cropimage;

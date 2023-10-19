@@ -10,5 +10,5 @@ import com.casestudy.model.Crop;
 public interface CropRepository extends MongoRepository<Crop, String> {
 	List<Crop> findByFarmerEmail(String farmerEmail);
 	Crop findByFarmerEmailAndCropName(String farmerEmail,String cropName);
-
+//	Crop findByIdAndCropName(String cropId,String cropName);
 }

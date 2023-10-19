@@ -1,7 +1,7 @@
 import { Crop } from "./crop";
 
 export class Farmer {
-    farmerId: string;
+    // farmerId: string;
     farmerEmail: string;
     farmerPassword: string;
     farmerName: string;
@@ -15,7 +15,7 @@ export class Farmer {
     crops: Crop[];
   
     constructor() {
-      this.farmerId = '';
+    //   this.farmerId = '';
       this.farmerEmail = '';
       this.farmerPassword = '';
       this.farmerName = '';

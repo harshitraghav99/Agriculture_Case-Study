@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.dealer.model.Crops;
-import com.dealer.model.CropsList;
+//import com.dealer.model.CropsList;
 import com.dealer.model.Dealer;
 import com.dealer.model.DealerList;
 import com.dealer.repository.DealerRepository;
@@ -58,6 +58,7 @@ public class DealerResource {
 		return dealerService.getDealer(dealerid);
 	}
 	
+	
 	//update Dealer details
 	@RequestMapping(method = RequestMethod.PUT, value = "/update/{dealerid}")
 	public String updateDetails(@RequestBody Dealer dealer, @PathVariable("dealerid") String dealerid)
@@ -73,23 +74,32 @@ public class DealerResource {
 	}
 	
 	//view the dealer crops
-	@RequestMapping("/dealercrops/{randomid}")
-	public Optional<CropsList> fetchDealerCrops(@PathVariable("randomid") String randomid)
-	{
-		return dealerService.getDealerCrops(randomid);
+//	@RequestMapping("/dealercrops/{randomid}")
+//	public Optional<CropsList> fetchDealerCrops(@PathVariable("randomid") String randomid)
+//	{
+//		return dealerService.getDealerCrops(randomid);
+//	}
+	
+	@PostMapping("/buyCrops/{dealerEmail}/{quantity}")
+	public void buyCrops(@PathVariable String dealerEmail ,@RequestBody Crops Crop , @PathVariable int quantity) {
+		
+		dealerService.buyCrop(dealerEmail, Crop, quantity);
+		return;
+		
+		
+		
 	}
 	
-	@RequestMapping("/dcrops/{randomid}")
-	public List<Crops> fetchCropsArray(@PathVariable("randomid") String randomid)
+	
+	@RequestMapping("/fetchCrops")
+	public List<Crops> fetchCrops()
 	{
-		return dealerService.getAllCropsArray(randomid);
+		return dealerService.getAllCrops();
 	}
 	
-	//view all crops
-	@RequestMapping("/dealerCrops/{randomid}")
-	public List<Crops> fetchCrops(@PathVariable("randomid") String randomid)
-	{
-		return dealerService.getCropsarray(randomid);
+	@GetMapping("/fetchCropById/{cropId}")
+	public Crops fetchCropById(@PathVariable String cropId) {
+		return dealerService.fetchCropById(cropId);
 	}
 	
 	@GetMapping("/listfarmers")
