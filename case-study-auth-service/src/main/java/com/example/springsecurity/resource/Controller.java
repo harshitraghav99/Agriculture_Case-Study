@@ -47,8 +47,8 @@ public class Controller {
 	@Autowired
 	private FarmerRepository repository;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private DealerRepository dealerRepository;
@@ -76,7 +76,8 @@ public class Controller {
 		System.out.println(farmer.getFarmerName());
 		userInfo.setName(farmer.getFarmerName());
 		System.out.println(farmer.getFarmerPassword());
-		userInfo.setPassword(passwordEncoder.encode(farmer.getFarmerPassword()));
+//		userInfo.setPassword(passwordEncoder.encode(farmer.getFarmerPassword()));
+		userInfo.setPassword(farmer.getFarmerPassword());
 		userInfo.setRoles("ROLE_FARMER");
 		userInfo.setEmail(farmer.getFarmerEmail());
 		userInfoRepository.save(userInfo);
@@ -108,7 +109,8 @@ public class Controller {
 		UserInfo userInfo = new UserInfo();
 //		userInfo.setId(dealer.getId());
 		userInfo.setName(dealer.getDealerName());
-		userInfo.setPassword(passwordEncoder.encode(dealer.getDealerPassword()));
+//		userInfo.setPassword(passwordEncoder.encode(dealer.getDealerPassword()));
+		userInfo.setPassword(dealer.getDealerPassword());
 		userInfo.setRoles("ROLE_DEALER");
 		userInfo.setEmail(dealer.getDealerEmail());
 		userInfoRepository.save(userInfo);

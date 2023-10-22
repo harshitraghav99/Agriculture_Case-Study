@@ -22,7 +22,15 @@ public class Crops {
 	private  String cropqnty;
 	private  String cropprice;
 	private String farmerEmail;
+	private String farmerName;
 	
+	
+	public String getFarmerName() {
+		return farmerName;
+	}
+	public void setFarmerName(String farmerName) {
+		this.farmerName = farmerName;
+	}
 	public String getFarmerEmail() {
 		return farmerEmail;
 	}
@@ -32,7 +40,7 @@ public class Crops {
 	public String getCropId() {
 		return cropId;
 	}
-	public void setCropid(String cropId) {
+	public void setCropId(String cropId) {
 		this.cropId = cropId;
 	}
 	public String getCropName() {

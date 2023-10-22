@@ -29,12 +29,17 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
           <ul>
             <li class="nav-item">
-              <a *ngIf="!loggedIn" class="nav-link" >SignUp</a>
+              <a *ngIf="!loggedIn" class="nav-link" [routerLink]="['/signup']">SignUp</a>
+
+            </li>
+            <li class="nav-item">
+              <a *ngIf="!loggedIn" class="nav-link" [routerLink]="['']">LogIn</a>
+              
             </li>
             </ul>
-            <ul>
+            <ul *ngIf="loggedIn">
             <li class="nav-item">
-              <a *ngIf="loggedIn" class="nav-link" (click)="logoutUser()">Logout</a>
+              <a  class="nav-link" (click)="logoutUser()">Logout</a>
             </li>
           </ul>
         </form>

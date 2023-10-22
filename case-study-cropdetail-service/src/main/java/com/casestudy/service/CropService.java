@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.casestudy.model.Crop;
 import com.casestudy.repository.CropRepository;
@@ -15,6 +16,9 @@ public class CropService {
 	
 	@Autowired
 	CropRepository cropRepository;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 //	public Optional<List<Crop>> getCropsEmail(String farmerEmail){
 	public List<Crop> getAllCrops(){
@@ -53,6 +57,10 @@ public class CropService {
 		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 		cropRepository.delete(crop);
 		return "deleted";
+	}
+	public String getFarmerName(String farmerEmail) {
+		String farmerName=restTemplate.getForObject("http://localhost:8090/farmer-service/getFarmerName/"+farmerEmail, String.class);
+		return farmerName;
 	}
 
 	public Crop getCropById(String id) {

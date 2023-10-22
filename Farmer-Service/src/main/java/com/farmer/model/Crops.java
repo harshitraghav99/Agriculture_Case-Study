@@ -29,6 +29,13 @@ public class Crops {
 //		this.farmerId = farmerId;
 //	}
 	private String farmerEmail;
+	private String farmerName;
+	public String getFarmerName() {
+		return farmerName;
+	}
+	public void setFarmerName(String farmerName) {
+		this.farmerName = farmerName;
+	}
 	public String getFarmerEmail() {
 		return farmerEmail;
 	}

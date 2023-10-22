@@ -1,38 +1,4 @@
-<!-- <section class="vh-100" style="background-color: #eee;">'
-  '
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-         <div class = "d-flex flex-row">
-          <div class="card mx-5" style="width: 18rem;">
-            <img src="https://5.imimg.com/data5/ST/QW/MY-38700875/fresh-wheat-crop.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Wheat</h5>
-              <p class="card-text">Price : ₹ 2200/QUINTAL</p>
-              <a href="#" class="btn btn-primary mx-2">+</a>
-              <p class = "mx-3 my-2">1 Q</p>
-              <a href="#" class="btn btn-primary mx-2">-</a>
 
-            </div>
-          </div>
-          <div class="card mx-5" style="width: 18rem;">
-            <img src="https://cdn.britannica.com/31/75931-050-FED41F1F/Barley.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Barley</h5>
-              <p class="card-text">Price : ₹ 1800/QUINTAL</p>
-              <a href="#" class="btn btn-primary mx-2">+</a>
-              <p class = "mx-3 my-2">1 Q</p>
-              <a href="#" class="btn btn-primary mx-2">-</a>
-
-            </div>
-          </div>
-          <button type="button" style = "height: 50px;" class="btn btn-primary btn-lg">Add Crop</button>
-        </div>
-          
-        </div>
-      </div>
-    </div>
-  </section> -->
 <div class="context">
 
   <div class="containerBox">
@@ -63,7 +29,7 @@
             <!-- <input [(ngModel)]="quantityTemp" type =text > -->
             <input type="text" (input)="captureInput($event)" placeholder="Enter Value">
             
-            <button (click)="updateCropsIncrease(crop.cropName)"> update</button>
+            <button (click)="updateCropsIncrease(crop.cropName)"> update inc</button>
             <button (click)="deleteCrop(crop.cropName)" class="buyButton" >Delete</button>
           </div>
 

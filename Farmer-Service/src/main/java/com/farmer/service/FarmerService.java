@@ -218,7 +218,8 @@ public class FarmerService {
 		}
 		farmerRepo.save(farmer);
 		
-		crop.setFarmerId(farmer.getFarmerId());
+//		crop.setFarmerId(farmer.getFarmerId());
+		crop.setFarmerName(farmer.getFarmerName());
 		System.out.println(crop.getCropName());
 		crop.setFarmerEmail(farmerEmail);
 		
@@ -236,6 +237,12 @@ public class FarmerService {
         // Handle the response as needed
         return response;
 	}
+	
+	public String getFarmerName(String farmerEmail) {
+		Farmer farmer=farmerRepo.findByFarmerEmail(farmerEmail);
+		return farmer.getFarmerName();
+	}
+	
 	
 	//find all crops added by the farmer
 	public List<Crops> findCrops(String farmerEmail)

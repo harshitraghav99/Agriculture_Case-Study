@@ -21,20 +21,30 @@ public class Crop {
 	private String cropdesc;
 	private String cropprice;
 
-	private String farmerId;
+//	private String farmerId;
 	private String farmerEmail;
+	private String farmerName;
+	
+	
+	public String getFarmerName() {
+		return farmerName;
+	}
+	public void setFarmerName(String farmerName) {
+		this.farmerName = farmerName;
+	}
+
 	public String getFarmerEmail() {
 		return farmerEmail;
 	}
 	public void setFarmerEmail(String farmerEmail) {
 		this.farmerEmail = farmerEmail;
 	}
-	public String getFarmerId() {
-		return farmerId;
-	}
-	public void setFarmerId(String farmerId) {
-		this.farmerId = farmerId;
-	}
+//	public String getFarmerId() {
+//		return farmerId;
+//	}
+//	public void setFarmerId(String farmerId) {
+//		this.farmerId = farmerId;
+//	}
 	
 	
 	public String getCropId() {

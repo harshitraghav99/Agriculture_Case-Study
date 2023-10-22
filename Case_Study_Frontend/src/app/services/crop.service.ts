@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class CropService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+  url="http://localhost:8081/auth";
+
+  getCrops(){
+    return 
+  }
 }

@@ -118,6 +118,10 @@ public class FarmerResource {
 		return;
 	}
 	
+	@GetMapping("/getFarmerName/{farmerEmail}")
+	public String getFarmerName(String farmerEmail){
+		return farmerService.getFarmerName(farmerEmail);
+	}
 	
 	//UPDATION
 	

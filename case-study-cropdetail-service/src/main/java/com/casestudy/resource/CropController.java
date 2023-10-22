@@ -32,6 +32,7 @@ public class CropController {
 	@PostMapping("/addCrop")
 	public String addCrop(@RequestBody Crop crop) {
 		System.out.println(crop.getCropName());
+		
 		repository.save(crop);
 		return "added crop with id: " + crop.getCropId();
 	}

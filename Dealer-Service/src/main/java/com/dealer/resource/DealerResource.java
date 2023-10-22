@@ -80,8 +80,8 @@ public class DealerResource {
 //		return dealerService.getDealerCrops(randomid);
 //	}
 	
-	@PostMapping("/buyCrops/{dealerEmail}/{quantity}")
-	public void buyCrops(@PathVariable String dealerEmail ,@RequestBody Crops Crop , @PathVariable int quantity) {
+	@PostMapping("/addToCart/{dealerEmail}/{quantity}")
+	public void addToCart(@PathVariable String dealerEmail ,@RequestBody Crops Crop , @PathVariable int quantity) {
 		
 		dealerService.buyCrop(dealerEmail, Crop, quantity);
 		return;
@@ -91,7 +91,7 @@ public class DealerResource {
 	}
 	
 	
-	@RequestMapping("/fetchCrops")
+	@GetMapping("/fetchCrops")
 	public List<Crops> fetchCrops()
 	{
 		return dealerService.getAllCrops();
