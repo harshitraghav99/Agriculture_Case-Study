@@ -6,6 +6,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { FarmerLandingPageComponent } from './farmer-landing-page/farmer-landing-page.component';
 import { DealerLandingPageComponent } from './dealer-landing-page/dealer-landing-page.component';
 import { AuthGuard } from './services/auth.guard';
+import { CartPageComponent } from './cart/cart-page/cart-page.component';
 
 const routes: Routes = [
 
@@ -13,6 +14,13 @@ const routes: Routes = [
     path:'home',
     component:HomecomponentComponent,
     pathMatch:'full'
+  },
+  {
+    path:'cart',
+    component:CartPageComponent,
+    pathMatch:'full',
+    canActivate:[AuthGuard]
+
   },
   {
     path:'',

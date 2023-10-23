@@ -10,7 +10,8 @@ import { FarmerLandingPageComponent } from './farmer-landing-page/farmer-landing
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomecomponentComponent } from './homecomponent/homecomponent.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { CartPageComponent } from './cart/cart-page/cart-page.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http'
     DealerLandingPageComponent,
     FarmerLandingPageComponent,
     NavbarComponent,
-    HomecomponentComponent
+    HomecomponentComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

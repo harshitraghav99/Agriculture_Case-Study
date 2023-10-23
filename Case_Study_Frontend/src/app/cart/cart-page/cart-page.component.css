@@ -1,0 +1,154 @@
+.background {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.parentCard {
+    background-color: #7C8363;
+
+    width: 90%;
+    border-radius: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 90%;
+    min-width: 550px;
+
+
+}
+
+.topBox {
+    width: 92%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: cente r;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+h2 {
+    color: #31473A;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.singleCard {
+    width: 90%;
+    height: 150px;
+    background-color: white;
+    border-radius: 45px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.removeButton {
+    border: none;
+    height: 30px;
+    width: 100px;
+    background-color: white;
+
+}
+
+.removeAllButton {
+
+    border: none;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    border-radius: 50px;
+
+
+}
+
+.removeButtontext {
+    font-weight: 800px;
+    font-size: 20px;
+    color: red
+}
+
+.removeAllButtontext {
+    font-weight: 800px bold;
+    font-size: 20px;
+    color: red;
+
+}
+
+
+.bottomBar {
+    display: flex;
+    height: 200px;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.totalBox {
+    width: 35%;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin: 10px;
+}
+
+.itemDetails {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.price {
+    font-weight: 700;
+    color: #EDF4F2;
+    font-size: 50px;
+}
+
+.checkoutButton {
+    border: none;
+    height: 40px;
+    width: 250px;
+    background-color: edf4f2;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonText {
+    font-size: 20px;
+    color: #246060;
+
+}
+
+.divider {
+    height: 3px;
+    background-color: #edf4f2;
+    width: 95%;
+    border-radius: 50PX;
+}
