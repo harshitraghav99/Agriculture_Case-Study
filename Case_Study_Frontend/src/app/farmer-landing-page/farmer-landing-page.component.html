@@ -3,15 +3,15 @@
 
   <div class="containerBox">
     <div class="parent">
-      <div class="formBody">
+      <!-- <div class="formBody">
         <h2 class="addCropHeading">Increase Crop Quantity</h2>
         <input [(ngModel)]="cropName" type="text" id="cropName" name="cropName" class="formInput"
           placeholder="Crop Name">
         <input [(ngModel)]="quantity" type="number" id="cropName" name="cropName" class="formInput"
           placeholder="Crop Quantity">
-        <!-- <button (click)="updateCropsIncrease()" class="addCropButton">Increase Crop Quantity</button> -->
+        <button (click)="updateCropsIncrease()" class="addCropButton">Increase Crop Quantity</button> 
         <button (click)="updateCropsDecrease()" class="addCropButton">Decrease Crop Quantity</button>
-      </div>
+      </div> -->
       <div *ngFor="let crop of crops" class="Cardd">
 
         <div class="cardRow">
@@ -30,6 +30,7 @@
             <input type="text" (input)="captureInput($event)" placeholder="Enter Value">
             
             <button (click)="updateCropsIncrease(crop.cropName)"> update inc</button>
+            <button (click)="updateCropsDecrease(crop.cropName)"> update dec</button>
             <button (click)="deleteCrop(crop.cropName)" class="buyButton" >Delete</button>
           </div>
 

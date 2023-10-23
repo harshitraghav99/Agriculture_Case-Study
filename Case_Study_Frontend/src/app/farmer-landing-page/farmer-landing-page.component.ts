@@ -55,11 +55,11 @@ export class FarmerLandingPageComponent {
       },
       error:(error:any)=>console.log(error)})
   }
-  updateCropsDecrease(){
+  updateCropsDecrease(cropName:any){
 
-    console.log(this.quantity,this.cropName);
+    console.log(this.quantity,cropName,this.quantity);
     const email=this.farmerService.getFarmerEmail(this.farmerService.getToken());
-    this.farmerService.updateCropsDecrease(this.cropName,this.quantity,email).subscribe({
+    this.farmerService.updateCropsDecrease(cropName,this.inputValue,email).subscribe({
       next:(response:any)=>{
         console.log(response)
         window.location.reload();

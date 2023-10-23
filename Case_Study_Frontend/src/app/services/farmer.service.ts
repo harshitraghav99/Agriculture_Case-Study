@@ -9,19 +9,26 @@ import { Farmer } from '../models/farmer';
 })
 export class FarmerService {
 
+  
   constructor(private http:HttpClient) { }
   url="http://localhost:8090/farmer-service";
 
   addCrops(crop:Crop){
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
-      // 'Authorization': "Basic" + btoa(credentials)
+      'Authorization': `Basic ${localStorage.getItem('token')}`
   });
   return this.http.post(`${this.url}/addcrops/${crop.farmerEmail}`,crop,{headers,responseType:'text'})
   }
 
+  
+  
   getCrops(email:string){
-    return this.http.get<Crop[]>(`${this.url}/fetchCropsFarmerEmail/${email}`);
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': `Basic ${localStorage.getItem('token')}` 
+  });
+    return this.http.get<Crop[]>(`${this.url}/fetchCropsFarmerEmail/${email}`,{headers});
   }
   getFarmerName(){
     // return this.http.get
@@ -41,16 +48,29 @@ export class FarmerService {
 
   updateCropsIncrease(cropName:string,quantity:number,email:string){
 
-    return this.http.put(`${this.url}/updateCropInc/${email}/${cropName}/${quantity}`,null);
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': `Basic ${localStorage.getItem('token')}` 
+  });
+    return this.http.put(`${this.url}/updateCropInc/${email}/${cropName}/${quantity}`,null,{headers});
 
   }
   updateCropsDecrease(cropName:string,quantity:number,email:string){
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': `Basic ${localStorage.getItem('token')}` 
+  });
 
-    return this.http.put(`${this.url}/updateCropDec/${email}/${cropName}/${quantity}`,null);
+  console.log(quantity + cropName + email+"farmerService")
+    return this.http.put(`${this.url}/updateCropDec/${email}/${cropName}/${quantity}`,null,{headers});
 
   }
   deleteCrop(cropName:string,email:string){
-    return this.http.delete(`${this.url}/deleteCrop/${email}/${cropName}`);
+    const headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      'Authorization': `Basic ${localStorage.getItem('token')}` 
+  });
+    return this.http.delete(`${this.url}/deleteCrop/${email}/${cropName}`,{headers});
 
   }
 }
