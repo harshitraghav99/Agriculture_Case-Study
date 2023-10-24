@@ -7,5 +7,7 @@ import com.dealer.model.Cart;
 
 public interface CartRepository extends MongoRepository<Cart, String>{
 
+	Cart findByDealerEmail(String dealerEmail);
+	
 	
 }

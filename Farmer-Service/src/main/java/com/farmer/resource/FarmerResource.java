@@ -94,27 +94,27 @@ public class FarmerResource {
 		return farmerService.fetchCropsFarmerEmailCropName(farmerEmail,cropName);
 	}
 	
-	@PutMapping("/updateCropInc/{farmerEmail}/{cropName}/{qty}")
-	public void updateCropInc(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName ,@PathVariable int qty)
+	@PutMapping("/updateCropInc/{farmerEmail}/{cropId}/{qty}")
+	public void updateCropInc(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropId ,@PathVariable int qty)
 	{
 //		System.out.println(farmerEmail+cropName+"hello");
-		farmerService.updateCropInc(farmerEmail,cropName,qty);
+		farmerService.updateCropInc(farmerEmail,cropId,qty);
 		return;
 	}
 	
-	@PutMapping("/updateCropDec/{farmerEmail}/{cropName}/{qty}")
-	public void updateCropDec(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName ,@PathVariable int qty)
+	@PutMapping("/updateCropDec/{farmerEmail}/{cropId}/{qty}")
+	public void updateCropDec(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropId ,@PathVariable int qty)
 	{
 //		System.out.println(farmerEmail+cropName+"hello");
-		farmerService.updateCropDec(farmerEmail,cropName,qty);
+		farmerService.updateCropDec(farmerEmail,cropId,qty);
 		return;
 	}
 	
-	@DeleteMapping("/deleteCrop/{farmerEmail}/{cropName}")
-	public void deleteCrop(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropName)
+	@DeleteMapping("/deleteCrop/{farmerEmail}/{cropId}")
+	public void deleteCrop(@PathVariable("farmerEmail") String farmerEmail,@PathVariable String  cropId)
 	{
-		System.out.println(farmerEmail+cropName+"hello");
-		farmerService.deleteCrop(farmerEmail,cropName);
+		System.out.println(farmerEmail+cropId+"hello");
+		farmerService.deleteCrop(farmerEmail,cropId);
 		return;
 	}
 	

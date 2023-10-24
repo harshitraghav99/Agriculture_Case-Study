@@ -34,7 +34,7 @@ public class CropController {
 		System.out.println(crop.getCropName());
 		
 		repository.save(crop);
-		return "added crop with id: " + crop.getCropId();
+		return crop.getCropId();
 	}
 	
 	
@@ -76,11 +76,11 @@ public class CropController {
 //		return "updated crop with id: " + crop.getFid();
 //	}
 	
-	@DeleteMapping("/deleteCrop/{farmerEmail}/{cropName}")
-	public String deleteCrop(@PathVariable String farmerEmail,@PathVariable String cropName) {
+	@DeleteMapping("/deleteCrop/{farmerEmail}/{cropId}")
+	public String deleteCrop(@PathVariable String farmerEmail,@PathVariable String cropId) {
 		
 
-		return cropService.deleteCrop(farmerEmail,cropName);
+		return cropService.deleteCrop(farmerEmail,cropId);
 		
 	}
 

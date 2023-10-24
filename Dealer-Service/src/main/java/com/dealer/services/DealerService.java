@@ -93,7 +93,7 @@ public class DealerService {
 	
 
 	public void buyCrop(String dealerEmail,Crops crop,int quantity) {
-		crop.setCropqnty(String.valueOf(quantity));
+		crop.setCropqnty(quantity);
 		
 		Dealer dealer = dealerRepo.findByDealerEmail(dealerEmail);
 		if(dealer.getDealerCart()==null) {
@@ -120,6 +120,36 @@ public class DealerService {
 		cartRepository.save(cart);
 		dealer.setDealerCart(cart);
 		dealerRepo.save(dealer);
+	}
+	
+	
+	public List<Crops> getCart(String email) {
+		Cart cart = cartRepository.findByDealerEmail(email);
+		return cart.getCrops();
+	}
+	
+	public void deleteCropFromCart(String email,String cropId) {
+		Cart cart = cartRepository.findByDealerEmail(email);
+		Dealer dealer =dealerRepo.findByDealerEmail(email);
+		List<Crops> crops = cart.getCrops();
+		for (Crops crops2 : crops) {
+			System.out.println(crops2.getCropName()+"crop");
+		}
+		int i=0;
+		for (Crops crop : crops) {
+			System.out.println(crop.getCropId());
+			System.out.println(cropId);
+			if(crop.getCropId().equalsIgnoreCase(cropId)) {
+				crops.remove(i);
+				break;
+			}
+			i++;
+		}
+		cart.setCrops(crops);
+		cartRepository.save(cart);
+		dealer.setDealerCart(cart);
+		dealerRepo.save(dealer);
+		
 	}
 	
 	/*

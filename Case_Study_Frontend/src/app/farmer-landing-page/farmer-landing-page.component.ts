@@ -44,22 +44,22 @@ export class FarmerLandingPageComponent {
   captureInput(event: Event): void {
     this.inputValue = (event.target as HTMLInputElement).value;
   }
-  updateCropsIncrease(cropName:any){
+  updateCropsIncrease(cropId:any){
     // this.quantity=this.quantityTemp;
 
-    console.log(this.quantity,this.cropName);
+    console.log(this.quantity,cropId);
     const email=this.farmerService.getFarmerEmail(this.farmerService.getToken());
-    this.farmerService.updateCropsIncrease(cropName,this.inputValue,email).subscribe({
+    this.farmerService.updateCropsIncrease(cropId,this.inputValue,email).subscribe({
       next:(response:any)=>{
         window.location.reload();
       },
       error:(error:any)=>console.log(error)})
   }
-  updateCropsDecrease(cropName:any){
+  updateCropsDecrease(cropId:any){
 
-    console.log(this.quantity,cropName,this.quantity);
+    console.log(this.quantity,cropId,this.quantity);
     const email=this.farmerService.getFarmerEmail(this.farmerService.getToken());
-    this.farmerService.updateCropsDecrease(cropName,this.inputValue,email).subscribe({
+    this.farmerService.updateCropsDecrease(cropId,this.inputValue,email).subscribe({
       next:(response:any)=>{
         console.log(response)
         window.location.reload();
@@ -80,14 +80,15 @@ export class FarmerLandingPageComponent {
     error:(error:any)=>console.log(error)}
     )
   }
-  onQuantityChange(crop: Crop): void {
-    // This function is called when the quantity of a specific crop changes.
-    console.log(`New quantity for ${crop.cropName}: ${crop.cropqnty}`);
-  }
+  // onQuantityChange(crop: Crop): void {
+  //   // This function is called when the quantity of a specific crop changes.
+  //   console.log(`New quantity for ${crop.cropName}: ${crop.cropqnty}`);
+  // }
 
-  deleteCrop(cropName:string){
+  deleteCrop(crop:Crop){
+    const cropId=crop.cropId;
     const email=this.farmerService.getFarmerEmail(this.farmerService.getToken())
-    this.farmerService.deleteCrop(cropName,email).subscribe({
+    this.farmerService.deleteCrop(cropId,email).subscribe({
       next:(response:any)=>{
         window.location.reload();
       },

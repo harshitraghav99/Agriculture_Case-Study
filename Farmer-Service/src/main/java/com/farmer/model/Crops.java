@@ -15,12 +15,12 @@ public class Crops {
 	private String cropId;
 	private String cropName;
 	private String cropimage;
-	private String cropqlty;
+	private int cropqlty;
 	private String croplocation;
 	private String cropcontact;
-	private String cropqnty;
+	private int cropqnty;
 	private String cropdesc;
-	private String cropprice;
+	private int cropprice;
 
 //	public String getFarmerId() {
 //		return farmerId;
@@ -60,10 +60,10 @@ public class Crops {
 	public void setCropimage(String cropimage) {
 		this.cropimage = cropimage;
 	}
-	public String getCropqlty() {
+	public int getCropqlty() {
 		return cropqlty;
 	}
-	public void setCropqlty(String cropqlty) {
+	public void setCropqlty(int cropqlty) {
 		this.cropqlty = cropqlty;
 	}
 	public String getCroplocation() {
@@ -78,10 +78,10 @@ public class Crops {
 	public void setCropcontact(String cropcontact) {
 		this.cropcontact = cropcontact;
 	}
-	public String getCropqnty() {
+	public int getCropqnty() {
 		return cropqnty;
 	}
-	public void setCropqnty(String cropqnty) {
+	public void setCropqnty(int cropqnty) {
 		this.cropqnty = cropqnty;
 	}
 	public String getCropdesc() {
@@ -90,10 +90,10 @@ public class Crops {
 	public void setCropdesc(String cropdesc) {
 		this.cropdesc = cropdesc;
 	}
-	public String getCropprice() {
+	public int getCropprice() {
 		return cropprice;
 	}
-	public void setCropprice(String cropprice) {
+	public void setCropprice(int cropprice) {
 		this.cropprice = cropprice;
 	}
 	

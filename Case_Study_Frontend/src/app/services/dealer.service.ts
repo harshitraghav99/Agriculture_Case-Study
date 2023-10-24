@@ -32,7 +32,7 @@ export class DealerService {
   getToken(){
     return localStorage.getItem('token')
   }
-  getFarmerEmail(token:any){
+  getDealerEmail(token:any){
     const payloadEmail=JSON.parse(atob(token.split('.')[1]));
     const email:string= payloadEmail.email;
     return email;

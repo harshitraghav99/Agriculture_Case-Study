@@ -38,7 +38,7 @@ export class DealerLandingPageComponent {
         this.crop=element;
       }
     });
-    const email=this.dealerService.getFarmerEmail(this.dealerService.getToken())
+    const email=this.dealerService.getDealerEmail(this.dealerService.getToken())
 
     this.dealerService.addToCart(this.crop,cropId,this.inputValue,email).subscribe({
       next:(response)=>{

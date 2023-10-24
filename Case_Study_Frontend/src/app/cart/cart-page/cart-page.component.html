@@ -6,20 +6,12 @@
                 <p class="removeAllButtontext">Remove All</p>
             </button>
         </div>
-        <div class="singleCard">
-            <h2>Wheat</h2>
-            <h2>Farmer Name</h2>
-            <h2>7.5Kg</h2>
-            <h2>4.5/10</h2>
-            <button class="removeButton">
-                <p class="removeButtontext">Remove</p>
-            </button>
-        </div>
-        <div class="singleCard">
-            <h2>Wheat</h2>
-            <h2>Farmer Name</h2>
-            <h2>7.5Kg</h2>
-            <h2>4.5/10</h2>
+        
+        <div *ngFor="let crop of crops" class="singleCard">
+            <h2>{{crop.cropName}}</h2>
+            <h2>{{crop.farmerName}}</h2>
+            <h2>{{crop.cropqnty}}</h2>
+            <h2>{{crop.cropqlty}}</h2>
             <button class="removeButton">
                 <p class="removeButtontext">Remove</p>
             </button>
@@ -31,9 +23,9 @@
             <div class="totalBox">
                 <div class="itemDetails">
                     <h2 style="color:white ; margin:0;">Sub-Total</h2>
-                    <h4 style="font-size: 20px; font-weight: 500; color: white">2 Items</h4>
+                    <h4 style="font-size: 20px; font-weight: 500; color: white">{{crops.length}}</h4>
                 </div>
-                <h1 class="price">₹100.25</h1>
+                <h1 class="price">₹{{total}}</h1>
             </div>
             <div>
                 <button class="checkoutButton">

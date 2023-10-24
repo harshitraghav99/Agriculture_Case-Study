@@ -3,12 +3,13 @@ export class Crop {
         this.cropId = '';
         this.cropName = '';
         this.cropimage = '';
-        this.cropqlty = '';
+        this.cropqlty = 0;
+
         this.croplocation = '';
         this.cropcontact = '';
-        this.cropqnty = '';
+        this.cropqnty = 0;
         this.cropdesc = '';
-        this.cropprice = '';
+        this.cropprice = 0;
         // this.farmerId = '';
         this.farmerEmail = '';
         this.farmerName='';
@@ -17,12 +18,12 @@ export class Crop {
     cropId?: string;
     cropName: string;
     cropimage: string;
-    cropqlty: string;
+    cropqlty: number;
     croplocation: string;
     cropcontact: string;
-    cropqnty: string;
+    cropqnty: number;
     cropdesc: string;
-    cropprice: string;
+    cropprice: number;
     // farmerId: string;
     farmerName:string;
     farmerEmail: string;

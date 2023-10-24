@@ -46,31 +46,31 @@ export class FarmerService {
   // }
 
 
-  updateCropsIncrease(cropName:string,quantity:number,email:string){
+  updateCropsIncrease(cropId:any,quantity:number,email:string){
 
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       'Authorization': `Basic ${localStorage.getItem('token')}` 
   });
-    return this.http.put(`${this.url}/updateCropInc/${email}/${cropName}/${quantity}`,null,{headers});
+    return this.http.put(`${this.url}/updateCropInc/${email}/${cropId}/${quantity}`,null,{headers});
 
   }
-  updateCropsDecrease(cropName:string,quantity:number,email:string){
+  updateCropsDecrease(cropId:any,quantity:number,email:string){
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       'Authorization': `Basic ${localStorage.getItem('token')}` 
   });
 
-  console.log(quantity + cropName + email+"farmerService")
-    return this.http.put(`${this.url}/updateCropDec/${email}/${cropName}/${quantity}`,null,{headers});
+  console.log(quantity + cropId + email+"farmerService")
+    return this.http.put(`${this.url}/updateCropDec/${email}/${cropId}/${quantity}`,null,{headers});
 
   }
-  deleteCrop(cropName:string,email:string){
+  deleteCrop(cropId:any,email:string){
     const headers = new HttpHeaders({
       "Content-Type": "application/json",
       'Authorization': `Basic ${localStorage.getItem('token')}` 
   });
-    return this.http.delete(`${this.url}/deleteCrop/${email}/${cropName}`,{headers});
+    return this.http.delete(`${this.url}/deleteCrop/${email}/${cropId}`,{headers});
 
   }
 }

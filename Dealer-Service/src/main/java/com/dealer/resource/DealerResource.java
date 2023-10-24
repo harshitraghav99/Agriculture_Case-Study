@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -86,8 +87,16 @@ public class DealerResource {
 		dealerService.buyCrop(dealerEmail, Crop, quantity);
 		return;
 		
-		
-		
+	}
+	
+	@GetMapping("/getCart/{dealerEmail}")
+	public List<Crops> getCart(@PathVariable String dealerEmail){
+		return dealerService.getCart(dealerEmail);
+	}
+	
+	@DeleteMapping("/deleteCropFromCart/{dealerEmail}/{cropId}")
+	public void deleteCropFromCart(@PathVariable String dealerEmail,@PathVariable String cropId) {
+		dealerService.deleteCropFromCart(dealerEmail, cropId);
 	}
 	
 	

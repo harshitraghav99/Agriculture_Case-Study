@@ -107,19 +107,19 @@ public class FarmerService {
 		
 	}
 	
-	public void updateCropInc(String farmerEamil, String cropName, int qty) {
+	public void updateCropInc(String farmerEamil, String cropId, int qty) {
 		
 		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
 //		System.out.println(qty +"quantity");
 		List<Crops> crops = farmer.getCrops();
 		int i = 0;
 		for (Crops crop : crops) {
-			if(crop.getCropName().equalsIgnoreCase(cropName)) {
-				int quantity=Integer.parseInt(crop.getCropqnty()) + qty;
+			if(crop.getCropId().equalsIgnoreCase(cropId)) {
+				int quantity=crop.getCropqnty() + qty;
 //				System.out.println(quantity+ "after add");
 				crops.remove(i);
 				
-				crop.setCropqnty(String.valueOf(quantity));
+				crop.setCropqnty(quantity);
 //				System.out.println(crop.getCropqnty());
 				crops.add(i, crop);
 				break;
@@ -129,24 +129,24 @@ public class FarmerService {
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 	
-		String baseUrl= "http://localhost:8090/crop-service/updateCropInc/"+farmerEamil+"/"+cropName+"/"+qty;
+		String baseUrl= "http://localhost:8090/crop-service/updateCropInc/"+farmerEamil+"/"+cropId+"/"+qty;
 		restTemplate.put(baseUrl, String.class);
 	}
 	
 	
-	public void updateCropDec(String farmerEamil, String cropName, int qty) {
+	public void updateCropDec(String farmerEamil, String cropId, int qty) {
 		
 		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
 //		System.out.println(qty +"quantity");
 		List<Crops> crops = farmer.getCrops();
 		int i = 0;
 		for (Crops crop : crops) {
-			if(crop.getCropName().equalsIgnoreCase(cropName)) {
-				int quantity=Integer.parseInt(crop.getCropqnty()) - qty;
+			if(crop.getCropId().equalsIgnoreCase(cropId)) {
+				int quantity=crop.getCropqnty() - qty;
 //				System.out.println(quantity+ "after add");
 				crops.remove(i);
 				
-				crop.setCropqnty(String.valueOf(quantity));
+				crop.setCropqnty(quantity);
 //				System.out.println(crop.getCropqnty());
 				crops.add(i, crop);
 				break;
@@ -156,13 +156,13 @@ public class FarmerService {
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 	
-		String baseUrl= "http://localhost:8090/crop-service/updateCropDec/"+farmerEamil+"/"+cropName+"/"+qty;
+		String baseUrl= "http://localhost:8090/crop-service/updateCropDec/"+farmerEamil+"/"+cropId+"/"+qty;
 		restTemplate.put(baseUrl, String.class);
 	}
 	
 	
 	
-	public void deleteCrop(String farmerEamil, String cropName) {
+	public void deleteCrop(String farmerEamil, String cropId) {
 		Farmer farmer = farmerRepo.findByFarmerEmail(farmerEamil);
 //		System.out.println(qty +"quantity");
 		System.out.println(farmer.getFarmerName());
@@ -170,7 +170,7 @@ public class FarmerService {
 		System.err.println(crops.isEmpty());
 		int i = 0;
 		for (Crops crop : crops) {
-			if(crop.getCropName().equalsIgnoreCase(cropName)) {
+			if(crop.getCropId().equalsIgnoreCase(cropId)) {
 				System.out.println("ïnLoop");
 				break;
 			}
@@ -182,7 +182,7 @@ public class FarmerService {
 		farmer.setCrops(crops);
 		farmerRepo.save(farmer);
 		
-		String baseUrl= "http://localhost:8090/crop-service/deleteCrop/"+farmerEamil+"/"+cropName;
+		String baseUrl= "http://localhost:8090/crop-service/deleteCrop/"+farmerEamil+"/"+cropId;
 		restTemplate.delete(baseUrl);
 	}
 	
@@ -192,6 +192,21 @@ public class FarmerService {
 		Farmer farmer =farmerRepo.findByFarmerEmail(farmerEmail);
 		
 		System.out.println(farmer.getFarmerName());
+		crop.setFarmerName(farmer.getFarmerName());
+		System.out.println(crop.getCropName());
+		crop.setFarmerEmail(farmerEmail);
+		
+		HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
+
+        ResponseEntity<String> response = restTemplate.postForEntity(
+        		"http://localhost:8090/crop-service/addCrop",
+            request,
+            String.class
+        );
+        crop.setCropid(response.getBody());
 		List<Crops> crops = new ArrayList<>();
 //		try {
 		
@@ -219,20 +234,6 @@ public class FarmerService {
 		farmerRepo.save(farmer);
 		
 //		crop.setFarmerId(farmer.getFarmerId());
-		crop.setFarmerName(farmer.getFarmerName());
-		System.out.println(crop.getCropName());
-		crop.setFarmerEmail(farmerEmail);
-		
-		HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<Crops> request = new HttpEntity<>(crop, headers);
-
-        ResponseEntity<String> response = restTemplate.postForEntity(
-        		"http://localhost:8090/crop-service/addCrop",
-            request,
-            String.class
-        );
 
         // Handle the response as needed
         return response;

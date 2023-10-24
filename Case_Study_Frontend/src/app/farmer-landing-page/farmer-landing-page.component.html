@@ -29,9 +29,9 @@
             <!-- <input [(ngModel)]="quantityTemp" type =text > -->
             <input type="text" (input)="captureInput($event)" placeholder="Enter Value">
             
-            <button (click)="updateCropsIncrease(crop.cropName)"> update inc</button>
-            <button (click)="updateCropsDecrease(crop.cropName)"> update dec</button>
-            <button (click)="deleteCrop(crop.cropName)" class="buyButton" >Delete</button>
+            <button (click)="updateCropsIncrease(crop.cropId)"> update inc</button>
+            <button (click)="updateCropsDecrease(crop.cropId)"> update dec</button>
+            <button (click)="deleteCrop(crop)" class="buyButton" >Delete</button>
           </div>
 
         </div>
@@ -49,13 +49,13 @@
           <h2 class="addCropHeading">Add Crop</h2>
           <input [(ngModel)]="crop.cropName" type="text" id="cropName" name="cropName" class="formInput" placeholder="Crop Name">
           <!-- <input [(ngModel)]="crop.cr" type="text" id="cropImage" name="cropImage" class="formInput" placeholder="Crop Image"> -->
-          <input [(ngModel)]="crop.cropqlty" type="text" id="cropQuality" name="cropQuality" class="formInput" placeholder="Crop Quality">
+          <input [(ngModel)]="crop.cropqlty" type="number" id="cropQuality" name="cropQuality" class="formInput" placeholder="Crop Quality ?/10">
           <input [(ngModel)]="crop.croplocation" type="text" id="cropLocation" name="cropLocation" class="formInput" placeholder="Crop Location">
           <input [(ngModel)]="crop.cropcontact" type="text" id="cropContact" name="cropContact" class="formInput" placeholder="Crop Contact">
-          <input [(ngModel)]="crop.cropqnty" type="text" id="cropQuantity" name="cropQuantity" class="formInput" placeholder="Crop Quantity">
+          <input [(ngModel)]="crop.cropqnty" type="number" id="cropQuantity" name="cropQuantity" class="formInput" placeholder="Crop Quantity">
           <input [(ngModel)]="crop.cropdesc" type="text" id="cropDescription" name="cropDescription" class="formInput"
             placeholder="Crop Description">
-          <input [(ngModel)]="crop.cropprice" type="text" id="cropPrice" name="cropPrice" class="formInput" placeholder="Crop Price">
+          <input [(ngModel)]="crop.cropprice" type="number" id="cropPrice" name="cropPrice" class="formInput" placeholder="Crop Price">
           <button type="submit" class="addCropButton">Add Crop</button>
         </div>
       </form>

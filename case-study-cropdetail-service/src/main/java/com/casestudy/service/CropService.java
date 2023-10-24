@@ -32,29 +32,29 @@ public class CropService {
 	public Crop getCropEmailCropName(String farmerEmail,String cropName) {
 		return cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
 	}
-	public Crop updateCropInc(String farmerEmail,String cropName,int qty) {
-		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
+	public Crop updateCropInc(String farmerEmail,String cropId,int qty) {
+		Crop crop = cropRepository.findByFarmerEmailAndCropId(farmerEmail, cropId);
 		System.out.println(crop.getCropName());
-		int quantity = Integer.parseInt(crop.getCropqnty());
+		int quantity = crop.getCropqnty();
 		quantity+=qty;
-		crop.setCropqnty(String.valueOf(quantity));
+		crop.setCropqnty(quantity);
 		cropRepository.save(crop);
 		return crop;
 	}
-	public Crop updateCropDec(String farmerEmail, String cropName, int qty) {
+	public Crop updateCropDec(String farmerEmail, String cropId, int qty) {
 		// TODO Auto-generated method stub
-		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
+		Crop crop = cropRepository.findByFarmerEmailAndCropId(farmerEmail, cropId);
 		System.out.println(crop.getCropName());
-		int quantity = Integer.parseInt(crop.getCropqnty());
+		int quantity = crop.getCropqnty();
 		quantity-=qty;
-		crop.setCropqnty(String.valueOf(quantity));
+		crop.setCropqnty(quantity);
 		cropRepository.save(crop);
 		return crop;
 		
 	}
-	public String deleteCrop(String farmerEmail, String cropName) {
+	public String deleteCrop(String farmerEmail, String cropId) {
 		// TODO Auto-generated method stub
-		Crop crop = cropRepository.findByFarmerEmailAndCropName(farmerEmail, cropName);
+		Crop crop = cropRepository.findByFarmerEmailAndCropId(farmerEmail, cropId);
 		cropRepository.delete(crop);
 		return "deleted";
 	}
